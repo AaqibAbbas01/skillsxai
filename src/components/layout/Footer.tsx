@@ -3,13 +3,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Github, 
-  Twitter, 
-  Linkedin, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Github,
+  Twitter,
+  Linkedin,
   Youtube,
   ArrowUpRight
 } from 'lucide-react'
@@ -26,6 +26,7 @@ const footerLinks = {
     { name: 'AI Agents Course', href: '/professionals/courses/workflow-automation' },
     { name: 'QA Automation', href: '/professionals/courses/qa-automation' },
     { name: 'Data Analyst', href: '/professionals/courses/data-analyst' },
+    { name: 'Digital Marketing', href: '/professionals/courses/digital-marketing' },
   ],
   company: [
     { name: 'About Us', href: '/about' },
@@ -47,7 +48,7 @@ export default function Footer() {
     <footer className="relative mt-20 border-t border-primary-500/20">
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent pointer-events-none" />
-      
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand Column */}
@@ -71,7 +72,7 @@ export default function Footer() {
               India&apos;s leading AI learning platform — empowering school students with AI
               literacy and helping professionals upskill with 100% placement assistance.
             </p>
-            
+
             {/* Contact Info */}
             <div className="space-y-3">
               <a href="mailto:info@skillsxai.com" className="flex items-center gap-3 text-gray-400 hover:text-primary-400 transition-colors">
@@ -147,7 +148,7 @@ export default function Footer() {
           <p className="text-gray-500 text-sm">
             © 2026 SkillsXAI. All rights reserved.
           </p>
-          
+
           {/* Social Links */}
           <div className="flex items-center gap-4">
             {socialLinks.map((social) => (

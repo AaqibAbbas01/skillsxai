@@ -111,6 +111,30 @@ const courses = [
     textColor: 'text-cyan-400',
     href: '/professionals/courses/data-analyst',
   },
+  {
+    id: 'digital-marketing',
+    icon: TrendingUp,
+    emoji: '📣',
+    title: 'Digital Marketing with AI',
+    tagline: 'AI-powered marketing strategies that convert',
+    duration: '8 Weeks',
+    level: 'Beginner → Advanced',
+    salary: '₹4L – ₹12L / year',
+    tools: ['ChatGPT', 'Google Ads', 'Meta Ads', 'SEO Tools', 'Canva AI', 'HubSpot'],
+    highlights: [
+      'Master AI-driven SEO, SEM & content marketing',
+      'Run high-ROI Google & Meta ad campaigns with AI',
+      'Automate social media with AI scheduling tools',
+      'Build marketing funnels & lead gen pipelines',
+      'Analytics, A/B testing & conversion optimization',
+    ],
+    color: 'from-orange-500 to-amber-500',
+    bgColor: 'from-[#1a0e00] to-[#2a1800]',
+    borderColor: 'border-orange-500/25',
+    glowColor: 'hover:shadow-[0_0_60px_rgba(249,115,22,0.2)]',
+    textColor: 'text-orange-400',
+    href: '/professionals/courses/digital-marketing',
+  },
 ]
 
 const placementSteps = [
@@ -245,7 +269,7 @@ const faqs = [
   },
   {
     q: 'What are the fees and EMI options?',
-    a: "Course fees range from ₹25,000 to ₹40,000 depending on the course. We offer 0% interest EMI over 3 or 6 months. Scholarships of up to 50% are available for students, freshers, and career-break candidates. Contact us to discuss.",
+    a: "All our professional courses are priced at ₹35,000 + GST. We offer 0% interest EMI over 3 or 6 months. Scholarships of up to 50% are available for students, freshers, and career-break candidates. Contact us to discuss.",
   },
   {
     q: 'How many hours per week do I need to commit?',
@@ -337,7 +361,7 @@ export default function ProfessionalsPage() {
             >
               {[
                 { value: '100%', label: 'Placement Rate' },
-                { value: '3', label: 'Job-Ready Courses' },
+                { value: '4', label: 'Job-Ready Courses' },
                 { value: '1:1', label: 'Mentorship' },
                 { value: '8–10w', label: 'Avg. Duration' },
               ].map((s, i) => (
@@ -432,7 +456,7 @@ export default function ProfessionalsPage() {
               </span>
             </motion.h2>
             <motion.p variants={itemVariants} className="section-subtitle">
-              Three high-demand, career-transforming programs with guaranteed placement support
+              Four high-demand, career-transforming programs with guaranteed placement support
             </motion.p>
           </motion.div>
 
@@ -441,7 +465,7 @@ export default function ProfessionalsPage() {
             whileInView="visible"
             viewport={{ once: true, margin: '-100px' }}
             variants={containerVariants}
-            className="grid lg:grid-cols-3 gap-8"
+            className="grid md:grid-cols-2 gap-8"
           >
             {courses.map((course, index) => (
               <motion.div key={course.id} variants={itemVariants} className="group">

@@ -59,7 +59,7 @@ You are Aria, a warm, professional, and highly knowledgeable AI assistant for Sk
 
 ### 1. Workflow Automation with AI Agents
 - Duration: 8 weeks (15–20 hrs/week), weekend batches available
-- Fee: ₹28,000 (0% EMI available)
+- Fee: ₹35,000 + GST (0% EMI available)
 - Tools: n8n, Make.com, LangChain, OpenAI API, Zapier, Python basics
 - Projects: AI Support Bot, Lead Generation Pipeline, Content Automation Workflow
 - Salary range post placement: ₹5–12 LPA
@@ -67,7 +67,7 @@ You are Aria, a warm, professional, and highly knowledgeable AI assistant for Sk
 
 ### 2. QA Automation with Playwright & Cypress
 - Duration: 8 weeks (15–20 hrs/week)
-- Fee: ₹30,000 (0% EMI available)
+- Fee: ₹35,000 + GST (0% EMI available)
 - Tools: Playwright, Cypress, Postman, GitHub Actions, Selenium, JIRA
 - Projects: E-commerce test suite, API automation framework, CI/CD pipeline
 - Salary range post placement: ₹6–14 LPA
@@ -75,11 +75,19 @@ You are Aria, a warm, professional, and highly knowledgeable AI assistant for Sk
 
 ### 3. Data Analyst with Python & Power BI
 - Duration: 10 weeks (15–20 hrs/week)
-- Fee: ₹32,000 (0% EMI available)
+- Fee: ₹35,000 + GST (0% EMI available)
 - Tools: Python, Pandas, SQL, Power BI, Tableau, Excel, Statistics
 - Projects: Sales Dashboard, Customer Churn Analysis, E-commerce Funnel Analysis
 - Salary range post placement: ₹5–13 LPA
 - URL: /professionals/courses/data-analyst
+
+### 4. Digital Marketing with AI
+- Duration: 8 weeks (15–20 hrs/week)
+- Fee: ₹35,000 + GST (0% EMI available)
+- Tools: ChatGPT, Google Ads, Meta Ads, SEO tools, Canva AI, HubSpot, Google Analytics, Hootsuite
+- Projects: AI-Powered SEO Strategy, Social Media Automation Pipeline, Performance Marketing Campaign
+- Salary range post placement: ₹4–12 LPA
+- URL: /professionals/courses/digital-marketing
 
 ---
 

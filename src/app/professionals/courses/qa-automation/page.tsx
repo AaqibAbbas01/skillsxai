@@ -182,7 +182,7 @@ export default function QAAutomationPage() {
                 <div className="space-y-4 mb-6">
                   <div className="flex items-center justify-between py-3 border-b border-white/5">
                     <span className="text-gray-400 text-sm">Course Fee</span>
-                    <span className="text-white font-bold">₹30,000</span>
+                    <span className="text-white font-bold">₹35,000 + GST</span>
                   </div>
                   <div className="flex items-center justify-between py-3 border-b border-white/5">
                     <span className="text-gray-400 text-sm">EMI Option</span>
@@ -368,10 +368,9 @@ export default function QAAutomationPage() {
                     <td className="py-4 px-6 text-white font-medium">{role.role}</td>
                     <td className="py-4 px-6 text-green-400 font-semibold">{role.salary}</td>
                     <td className="py-4 px-6">
-                      <span className={`px-2.5 py-1 rounded-full text-xs font-semibold ${
-                        role.demand === 'Very High' ? 'bg-orange-500/10 text-orange-400 border border-orange-500/20' :
-                        'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20'
-                      }`}>
+                      <span className={`px-2.5 py-1 rounded-full text-xs font-semibold ${role.demand === 'Very High' ? 'bg-orange-500/10 text-orange-400 border border-orange-500/20' :
+                          'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20'
+                        }`}>
                         {role.demand}
                       </span>
                     </td>

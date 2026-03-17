@@ -202,7 +202,7 @@ export default function WorkflowAutomationPage() {
                 <div className="space-y-4 mb-6">
                   <div className="flex items-center justify-between py-3 border-b border-white/5">
                     <span className="text-gray-400 text-sm">Course Fee</span>
-                    <span className="text-white font-bold">₹28,000</span>
+                    <span className="text-white font-bold">₹35,000 + GST</span>
                   </div>
                   <div className="flex items-center justify-between py-3 border-b border-white/5">
                     <span className="text-gray-400 text-sm">EMI Option</span>
