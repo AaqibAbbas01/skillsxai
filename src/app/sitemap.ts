@@ -1,5 +1,4 @@
 import { MetadataRoute } from 'next'
-import { getAllPosts } from '@/lib/blog'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://skillsxai.com'
@@ -79,8 +78,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  const posts = getAllPosts()
-  const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({
+  const blogSlugs = [
+    { slug: 'complete-guide-playwright-automation-testing-2026', date: '2026-04-18' },
+    { slug: 'playwright-vs-selenium-which-should-you-learn-2026', date: '2026-04-17' },
+    { slug: 'how-to-become-data-analyst-india-complete-roadmap-2026', date: '2026-04-16' },
+    { slug: 'playwright-vs-cypress-head-to-head-comparison-2026', date: '2026-04-15' },
+    { slug: 'playwright-tutorial-beginners-write-first-test-30-minutes', date: '2026-04-14' },
+    { slug: 'sql-for-data-analysts-20-queries-you-must-know', date: '2026-04-13' },
+    { slug: 'qa-automation-tester-salary-india-2026-complete-breakdown', date: '2026-04-12' },
+    { slug: 'data-analyst-interview-questions-answers-2026', date: '2026-04-11' },
+    { slug: 'best-automation-testing-tools-2026-comparison-guide', date: '2026-04-10' },
+    { slug: 'what-are-ai-agents-beginners-complete-guide', date: '2026-04-09' },
+    { slug: 'n8n-automation-tutorial-build-first-workflow', date: '2026-04-08' },
+    { slug: 'power-bi-vs-tableau-which-data-viz-tool-2026', date: '2026-04-07' },
+    { slug: 'the-top-5-skills-you-need-for-the-ai-era', date: '2026-01-06' },
+  ]
+
+  const blogPages: MetadataRoute.Sitemap = blogSlugs.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.date),
     changeFrequency: 'monthly' as const,
