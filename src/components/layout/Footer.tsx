@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
 import {
   Mail,
@@ -44,6 +45,8 @@ const socialLinks = [
 ]
 
 export default function Footer() {
+  const pathname = usePathname()
+  if (pathname.startsWith('/masterclass')) return null
   return (
     <footer className="relative mt-20 border-t border-primary-500/20">
       {/* Gradient overlay */}

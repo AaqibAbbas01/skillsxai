@@ -1,11 +1,14 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { usePathname } from 'next/navigation'
 
 export default function ParticleBackground() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const pathname = usePathname()
 
   useEffect(() => {
+    if (pathname.startsWith('/masterclass')) return
     const container = containerRef.current
     if (!container) return
 

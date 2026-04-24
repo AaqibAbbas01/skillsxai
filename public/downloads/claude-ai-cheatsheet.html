@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claude AI Cheat Sheet — 50+ Power Prompts | SkillsXAI</title>
+  <meta name="description" content="Premium Claude AI prompt library: writing, coding, business, research, creative, power commands, and advanced techniques." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-deep: #070b12;
+      --bg-card: #0d1320;
+      --bg-elevated: #121a2b;
+      --border: rgba(56, 189, 248, 0.14);
+      --text: #e8edf5;
+      --text-muted: #94a3b8;
+      --accent-blue: #38bdf8;
+      --accent-orange: #fb923c;
+      --gradient-hero: linear-gradient(135deg, #0ea5e9 0%, #6366f1 45%, #f97316 100%);
+      --gradient-card-top: linear-gradient(90deg, rgba(14, 165, 233, 0.35), rgba(249, 115, 22, 0.25));
+      --code-bg: #050810;
+      --shadow: 0 24px 64px -20px rgba(0, 0, 0, 0.65);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 15px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--bg-deep);
+      background-image:
+        radial-gradient(ellipse 120% 80% at 10% -10%, rgba(14, 165, 233, 0.18), transparent 50%),
+        radial-gradient(ellipse 100% 60% at 100% 0%, rgba(249, 115, 22, 0.12), transparent 45%),
+        radial-gradient(ellipse 80% 50% at 50% 100%, rgba(99, 102, 241, 0.1), transparent 55%);
+      line-height: 1.55;
+      padding: 2rem 1.25rem 3.5rem;
+      min-height: 100vh;
+    }
+
+    .wrap {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    .print-bar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-print {
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 0.65rem 1.35rem;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 999px;
+      cursor: pointer;
+      color: var(--bg-deep);
+      background: linear-gradient(135deg, #7dd3fc, #fdba74);
+      box-shadow: 0 8px 28px -8px rgba(14, 165, 233, 0.45);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn-print:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 36px -10px rgba(249, 115, 22, 0.4);
+    }
+
+    .doc-hero {
+      position: relative;
+      border-radius: 20px;
+      padding: 2.25rem 2rem 2rem;
+      margin-bottom: 2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .doc-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: var(--gradient-hero);
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--gradient-hero);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .brand-name {
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-tag {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent-blue);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+    }
+
+    .doc-title {
+      font-size: clamp(1.65rem, 4vw, 2.15rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.65rem;
+      background: linear-gradient(90deg, #f8fafc 0%, #bae6fd 40%, #fed7aa 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .doc-sub {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 52ch;
+    }
+
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.35rem;
+      padding-top: 1.35rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .stat strong {
+      color: var(--accent-orange);
+      font-weight: 600;
+    }
+
+    .intro-note {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      padding: 1rem 1.15rem;
+      border-radius: 12px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+    }
+
+    .intro-note strong {
+      color: var(--text);
+    }
+
+    .category {
+      margin-bottom: 2rem;
+      border-radius: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      box-shadow: 0 16px 48px -24px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+    }
+
+    .category-header {
+      padding: 1rem 1.35rem;
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .category-header::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 3px;
+      background: var(--gradient-card-top);
+    }
+
+    .category-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .category-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      background: rgba(249, 115, 22, 0.15);
+      color: var(--accent-orange);
+      border: 1px solid rgba(249, 115, 22, 0.35);
+    }
+
+    .category-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+    }
+
+    .prompt-list {
+      padding: 1.1rem 1.35rem 1.35rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
+    }
+
+    .prompt {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .prompt-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #f1f5f9;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .prompt-title::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-blue);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+      flex-shrink: 0;
+    }
+
+    .code-block {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 0.72rem;
+      line-height: 1.55;
+      background: var(--code-bg);
+      color: #cbd5e1;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .tip {
+      margin-top: 0.45rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      padding-left: 0.15rem;
+      border-left: 2px solid rgba(249, 115, 22, 0.45);
+      padding-left: 0.65rem;
+    }
+
+    .tip::before {
+      content: "Tip · ";
+      color: var(--accent-orange);
+      font-weight: 600;
+    }
+
+    .doc-footer {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .doc-footer a {
+      color: var(--accent-blue);
+      text-decoration: none;
+    }
+
+    .doc-footer a:hover {
+      text-decoration: underline;
+    }
+
+    @page {
+      size: A4;
+      margin: 14mm;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: var(--bg-deep);
+        background-image: none;
+      }
+
+      .no-print,
+      .print-bar {
+        display: none !important;
+      }
+
+      .doc-hero,
+      .category,
+      .intro-note {
+        box-shadow: none;
+      }
+
+      .category {
+        margin-bottom: 1.25rem;
+        break-inside: auto;
+      }
+
+      .category-header {
+        break-after: avoid-page;
+      }
+
+      .prompt {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .code-block {
+        border-color: rgba(56, 189, 248, 0.35);
+      }
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1.25rem 1rem 2.5rem;
+      }
+
+      .doc-hero {
+        padding: 1.5rem 1.25rem;
+      }
+
+      .code-block {
+        font-size: 0.68rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="print-bar no-print">
+      <button type="button" class="btn-print" onclick="window.print()">Print / Save as PDF</button>
+    </div>
+
+    <header class="doc-hero">
+      <div class="brand-row">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">SX</div>
+          <div class="brand-text">
+            <span class="brand-name">SkillsXAI</span>
+            <span class="brand-tag">Premium prompt library</span>
+          </div>
+        </div>
+        <span class="badge">Download</span>
+      </div>
+      <h1 class="doc-title">Claude AI Cheat Sheet — 50+ Power Prompts</h1>
+      <p class="doc-sub">
+        Copy-paste templates for writing, engineering, strategy, research, and advanced control — tuned for high-signal outputs with Claude.
+      </p>
+      <div class="stats">
+        <span class="stat"><strong>52</strong> ready-to-use prompts</span>
+        <span class="stat"><strong>7</strong> categories + techniques</span>
+        <span class="stat">Optimized for <strong>A4 PDF</strong> export</span>
+      </div>
+    </header>
+
+    <p class="intro-note">
+      <strong>How to use:</strong> Replace bracketed placeholders like <code style="font-family:JetBrains Mono,monospace;font-size:0.85em;">[TOPIC]</code> with your specifics. For long documents, paste source material after the prompt under a clear heading such as “SOURCE:”.
+    </p>
+
+    <!-- 1. Writing & Content -->
+    <section class="category">
+      <div class="category-header">
+        <h2 class="category-title"><span class="category-num">1</span> Writing &amp; Content</h2>
+        <p class="category-meta">9 prompts — blogs, email, social, careers, and narrative marketing</p>
+      </div>
+      <div class="prompt-list">
+        <article class="prompt">
+          <h3 class="prompt-title">Blog post generator</h3>
+          <pre class="code-block">Act as a senior editor and SEO-aware writer. Write a blog post on [TOPIC] for [AUDIENCE — e.g. startup founders]. Goals: rank for intent around [PRIMARY KEYWORD] without keyword stuffing. Structure: (1) headline + subhead promise, (2) hook in the first 120 words, (3) 4–6 H2 sections each ending with a takeaway, (4) one numbered “quick checklist”, (5) FAQ with 4 Q&amp;As, (6) conclusion with one clear CTA. Tone: [professional / conversational]. Length: ~[N] words. Use specific examples; flag any claims that need a citation as [VERIFY].</pre>
+          <p class="tip">Give 3 competitor article titles you want to beat — Claude will sharpen angles.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Professional email</h3>
+          <pre class="code-block">Draft a professional email. To: [ROLE / NAME]. Subject: [THREAD TOPIC]. My goal: [e.g. request a 30-min call next week]. Context (facts only): [PASTE 3–6 BULLETS OR SUMMARY]. Constraints: max [N] words, tone [warm-neutral / firm / apologetic], avoid jargon. Output: Subject line + body. If declining or pushing back, offer one constructive alternative. If following up, reference prior touchpoint without sounding passive-aggressive.</pre>
+          <p class="tip">Paste the last email you received (redacted) so the reply matches thread tone.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Social media captions</h3>
+          <pre class="code-block">Create social captions for [PLATFORM: LinkedIn / X / Instagram]. Topic: [ONE-SENTENCE HOOK]. Brand voice: [3 adjectives]. Deliver: (1) 1 long post (with line breaks), (2) 3 short variants under 280 chars, (3) 10 hashtag ideas (mix broad + niche), (4) 2 CTA options. Rules: no engagement bait, no fake urgency, no unverifiable stats. Include one optional “thread starter” reply prompt for comments.</pre>
+          <p class="tip">Add “banned phrases: [list]” to keep voice on-brand.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Product descriptions</h3>
+          <pre class="code-block">Write ecommerce product copy for [PRODUCT NAME]. Audience: [WHO BUYS IT]. Specs / facts: [PASTE BULLETS]. Differentiators vs alternatives: [2–4 BULLETS]. Output: (1) title (≤70 chars), (2) short description (1–2 sentences), (3) benefits-led bullets (5), (4) “what’s in the box”, (5) care / compatibility notes if relevant. Style: scannable, confident, no superlatives without proof. Flag compliance-sensitive claims as [CLAIM — NEEDS PROOF].</pre>
+          <p class="tip">Include return policy and shipping region — Claude can weave trust without legal overreach.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Resume bullet points</h3>
+          <pre class="code-block">Rewrite my resume bullets to be achievement-focused for [ROLE YOU’RE TARGETING]. For each bullet I paste, apply: Action verb + scope + metric + impact + tool/method (if true). Rules: don’t invent metrics; if unknown, use [METRIC TBD] and suggest what to measure. Keep each line ≤ 28 words. Output a table: Original | Improved | Why it’s stronger. Then give 5 headline options for my resume header based on my pasted experience summary.</pre>
+          <p class="tip">Paste the job description — bullets will mirror language the ATS expects.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Cover letter</h3>
+          <pre class="code-block">Write a cover letter for [COMPANY] / [ROLE]. My background summary: [PASTE]. Job description highlights: [PASTE 5–10 LINES]. Requirements: 250–350 words, 3 paragraphs, no clichés (“passionate”, “synergy”), include one concrete project story with outcome, connect my skills to their stated priorities, end with a confident close (not desperate). If company values/mission are known: [PASTE], align subtly once.</pre>
+          <p class="tip">Name the hiring manager if known — personalization beats generic openers.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Newsletter</h3>
+          <pre class="code-block">Draft a newsletter issue for [AUDIENCE]. Theme: [THEME]. Sections required: Subject line (2 options) + preview text, Intro (100–140 words), “3 things” curated list with 2-sentence blurbs + links placeholders [LINK], One original mini-essay (250–350 words), Tool/resource spotlight, Closing + P.S. Tone: [voice guidelines]. Constraints: reading time ~[N] min, skimmable headings, one clear CTA. If I paste links later, don’t hallucinate summaries—use placeholders.</pre>
+          <p class="tip">Specify send day (“Sunday brief”) so pacing and CTA match reader context.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">LinkedIn post</h3>
+          <pre class="code-block">Write a LinkedIn post for [YOUR ROLE/INDUSTRY]. Core idea: [ONE PARAGRAPH]. Format: hook line, short story or framework, 3 numbered lessons, ending question. Use whitespace and short paragraphs. Avoid: “Agree?”, “Thoughts?”, buzzword stacking. Optional: add a simple ASCII or bullet framework. Length: 1,200–1,800 characters. Include 3 comment prompts that invite expertise, not platitudes.</pre>
+          <p class="tip">Add “controversy level: low/medium” to calibrate how sharp the take sounds.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Case study narrative (bonus)</h3>
+          <pre class="code-block">Turn my project notes into a polished case study for [B2B / portfolio]. Client/context: [ANONYMIZE AS NEEDED]. Problem: []. Constraints: [timeline, budget, stack]. Approach: [steps]. Results: [metrics — mark unknowns as TBD]. Output sections: Executive summary, Challenge, Solution (with architecture/process diagram described in text), Results (table), Lessons learned, Quote-style testimonial draft [APPROVAL NEEDED]. Tone: credible, concise, no hype adjectives.</pre>
+          <p class="tip">Anonymize with “Fortune 500 retailer” style labels when you can’t name names.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 2. Coding & Technical -->
+    <section class="category">
+      <div class="category-header">
+        <h2 class="category-title"><span class="category-num">2</span> Coding &amp; Technical</h2>
+        <p class="category-meta">9 prompts — debug, tests, APIs, SQL, reviews, and translation</p>
+      </div>
+      <div class="prompt-list">
+        <article class="prompt">
+          <h3 class="prompt-title">Debug code</h3>
+          <pre class="code-block">You are a staff engineer. Debug the following code. Steps: (1) restate the expected vs actual behavior, (2) list hypotheses ordered by likelihood, (3) pinpoint root cause with line references, (4) propose minimal fix with code diff, (5) add 2–3 tests or assertions that would have caught this, (6) note any security/perf footguns. If info is missing, ask up to 3 targeted questions first. Stack: [LANGUAGE/FRAMEWORK]. Error/logs: [PASTE]. Code: [PASTE].</pre>
+          <p class="tip">Include inputs that reproduce the bug — fewer rounds of back-and-forth.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Refactor code</h3>
+          <pre class="code-block">Refactor for readability and maintainability without changing behavior. Constraints: preserve public API, no new dependencies unless justified, prefer small pure functions, add types if TypeScript. Deliver: (1) refactored code, (2) brief rationale for structural changes, (3) “before/after” complexity notes, (4) follow-up checklist (tests to run). If you must break behavior, STOP and explain. Code: [PASTE]. Context: [WHAT THIS MODULE DOES].</pre>
+          <p class="tip">Say “max cyclomatic complexity 10 per function” for tighter decomposition.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Write unit tests</h3>
+          <pre class="code-block">Generate unit tests using [Jest / Vitest / pytest / Go test]. Target: [FILE/FUNCTION]. Requirements: cover happy path, edge cases, and failure modes; use table-driven tests where appropriate; mock external I/O; avoid flaky timing. Output: complete test file + commands to run. If coverage gaps remain, list them explicitly. Code under test: [PASTE].</pre>
+          <p class="tip">Paste your testing conventions (e.g. Arrange-Act-Assert) for consistent style.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Explain complex code</h3>
+          <pre class="code-block">Explain this code like I’m a [junior/mid/senior] [LANGUAGE] developer but new to this codebase. Output: (1) one-paragraph purpose, (2) step-by-step execution trace for typical input, (3) diagram in text (flow or sequence), (4) glossary of non-obvious terms, (5) “gotchas” and invariants, (6) 5 quiz questions to check understanding. Code: [PASTE]. Entry point / call site: [IF KNOWN].</pre>
+          <p class="tip">Ask for “mental model first, details second” when you’re overwhelmed by line noise.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">API endpoint generator</h3>
+          <pre class="code-block">Design a REST (or RPC) API for [RESOURCE]. Framework: [Express / FastAPI / Next route handlers / etc.]. Requirements: auth model [JWT/session/API key], idempotency for writes if needed, pagination style, error schema, rate-limit notes. Deliver: OpenAPI-style paths table, example request/response JSON for 200/400/401/404/409/422/500, and stub handler code with validation. Data model: [PASTE OR DESCRIBE].</pre>
+          <p class="tip">Mention your DB (Postgres vs Dynamo) — shapes and constraints will match reality.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">SQL query builder</h3>
+          <pre class="code-block">Write SQL for [Postgres / MySQL / SQLite / BigQuery]. Task: [DESCRIBE REPORT OR UPDATE]. Schema: [PASTE DDL OR DESCRIBE TABLES]. Rules: parameterize user inputs in comments, avoid SELECT *, add appropriate indexes suggestions (CREATE INDEX …) if slow paths likely, use CTEs for readability. Output: final query + brief explanation + sample output rows (fictional ok). If ambiguous, propose two interpretations.</pre>
+          <p class="tip">Paste EXPLAIN ANALYZE output for tuning — Claude can suggest concrete rewrites.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Code review</h3>
+          <pre class="code-block">Perform a PR review on the diff below. Categories: correctness, security, performance, API compatibility, tests, observability, naming/docs. Use severity tags: [BLOCKER] [MAJOR] [MINOR] [NIT]. For each issue: location, why it matters, suggested fix. End with a merge recommendation: approve / approve with nits / request changes. Diff / files: [PASTE]. Context: [FEATURE GOAL]. Threat model notes: [IF ANY].</pre>
+          <p class="tip">Include your team’s standards link or bullet list so feedback aligns with house style.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Language conversion</h3>
+          <pre class="code-block">Translate this implementation from [LANG A] to [LANG B]. Preserve behavior and public interfaces. Map idioms (async, errors, null handling). Deliver: (1) translated code, (2) dependency mapping table, (3) behavioral parity checklist, (4) tests ported or rewritten. Flag any semantic gaps (e.g., integer size, timezone). Source: [PASTE].</pre>
+          <p class="tip">Note target version (e.g. Python 3.12, Java 21) to avoid deprecated APIs.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">CI-friendly test plan (bonus)</h3>
+          <pre class="code-block">Given this feature spec: [PASTE]. Produce a CI-friendly test plan: unit/integration/e2e split, data fixtures, flaky-risk areas, feature flags, rollback checks. Output: bullet test cases with Given/When/Then, priority (P0–P2), and which layer runs in PR vs nightly. Include minimal mocking strategy and observability assertions (logs/metrics) if relevant.</pre>
+          <p class="tip">Attach your pipeline tool (GitHub Actions, etc.) for copy-paste workflow stubs.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3. Business & Productivity -->
+    <section class="category">
+      <div class="category-header">
+        <h2 class="category-title"><span class="category-num">3</span> Business &amp; Productivity</h2>
+        <p class="category-meta">8 prompts — meetings, strategy, planning, and stakeholder comms</p>
+      </div>
+      <div class="prompt-list">
+        <article class="prompt">
+          <h3 class="prompt-title">Meeting summary</h3>
+          <pre class="code-block">Summarize this meeting for stakeholders who weren’t present. Input: raw notes or transcript [PASTE]. Output: (1) 5-bullet executive summary, (2) decisions made (owner + deadline), (3) open questions, (4) risks/blockers, (5) next steps as a checklist. Rules: attribute decisions only when explicit; otherwise mark as [UNCONFIRMED]. Tone: neutral, factual. Redact PII as [REDACTED].</pre>
+          <p class="tip">Paste attendee list so action owners are assigned to real roles.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">SWOT analysis</h3>
+          <pre class="code-block">Create a SWOT for [COMPANY / PRODUCT / INITIATIVE]. Context: market, customers, competitors, capabilities [PASTE]. Requirements: 4–5 bullets per quadrant, each bullet starts with a bold label, include “so what” implication for top 2 items per quadrant, note data gaps as [ASSUMPTION]. Avoid generic platitudes—tie strengths/weaknesses to evidence. End with 3 strategic moves: mitigate weakness, exploit opportunity, monitor threat.</pre>
+          <p class="tip">Add your moat and distribution reality — SWOTs fail when strengths are wishful.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Project plan</h3>
+          <pre class="code-block">Build a project plan for [GOAL]. Constraints: budget [X], timeline [Y], team [ROLES], tools [STACK]. Deliver: milestones (with dates), work breakdown (2-level), dependencies, RACI for key deliverables, risk register (probability/impact + mitigation), communication cadence, definition of done. Use a table for milestones. Flag unknown estimates as [TBD] with what data would de-risk them.</pre>
+          <p class="tip">Name your release strategy (big-bang vs iterative) — plans change a lot based on it.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Competitor analysis</h3>
+          <pre class="code-block">Analyze competitors for [CATEGORY]. Competitors: [A, B, C]. My product: [ONE-PARAGRAPH]. Output: comparison table (pricing motion, ICP, core features, integrations, positioning, strengths, weaknesses, likely next moves). Add “watch list” signals (hiring, releases, pricing). Mark uncertain items [INFERRED]. Finish with 5 positioning angles we can credibly own and 3 landmines to avoid.</pre>
+          <p class="tip">Paste their homepage hero copy — positioning gaps surface faster than feature lists.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Pitch deck outline</h3>
+          <pre class="code-block">Outline a [N]-slide pitch deck for [STAGE: pre-seed/seed/Series A] [COMPANY]. Audience: [investors/partners]. Facts to preserve: [TRACTION, TEAM, MARKET, PRODUCT — PASTE]. For each slide: title, 3–5 bullets max, speaker notes (30–45s), and one visual suggestion. Include expected investor objections and where to preempt them. Avoid hype; quantify claims or tag [NEEDS DATA].</pre>
+          <p class="tip">Specify round size and use of funds — slide order shifts when the ask is crisp.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">OKR generator</h3>
+          <pre class="code-block">Draft quarterly OKRs for [TEAM] aligned to company theme: [THEME]. Inputs: current metrics [PASTE], constraints [PASTE]. Rules: 3 Objectives max, 2–4 KRs each, every KR has baseline, target, and measurement method + data source. Use outcome KRs, not task lists. Include a “health metrics” section (quality, reliability, debt) that must not regress. Flag conflicts or dependencies between KRs.</pre>
+          <p class="tip">Paste last quarter’s misses — good OKRs encode honest baselines.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Status report</h3>
+          <pre class="code-block">Write a weekly status report for [PROGRAM]. Audience: [exec/engineering/customer]. Sections: headline (1 sentence), shipped, in progress (% confidence + ETA), blocked (owner + ask), metrics (table), customer/stakeholder feedback themes, risks (severity), next week plan. Tone: crisp, no blame. If I paste raw updates, normalize voice and remove duplicates. Redact sensitive names if marked.</pre>
+          <p class="tip">Add “max 1 page” — forces signal over activity theater.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Process documentation</h3>
+          <pre class="code-block">Document an operational process for [PROCESS NAME] so a new hire can run it. Inputs: rough steps [PASTE]. Output: purpose, scope, roles, prerequisites, step-by-step SOP (numbered), decision tree for common exceptions, SLAs, tooling links as [LINK], audit trail expectations, and failure modes + escalation. Include a starter checklist template. Use plain language; define acronyms once.</pre>
+          <p class="tip">Add “failure story from last month” — exceptions become first-class in the SOP.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 4. Research & Analysis -->
+    <section class="category">
+      <div class="category-header">
+        <h2 class="category-title"><span class="category-num">4</span> Research &amp; Analysis</h2>
+        <p class="category-meta">6 prompts — synthesis, evidence, and decision-ready views</p>
+      </div>
+      <div class="prompt-list">
+        <article class="prompt">
+          <h3 class="prompt-title">Literature review</h3>
+          <pre class="code-block">Produce a structured literature review on [RESEARCH QUESTION]. Sources I provide: [PASTE TITLES/ABSTRACTS/LINKS]. Output: (1) scope and inclusion criteria, (2) thematic synthesis (not article-by-article laundry list), (3) comparison of methods/findings, (4) gaps and contradictions, (5) implications, (6) suggested experiments/next studies. Mark where you lack full text as [NOT VERIFIED FROM SOURCE]. Academic tone, precise verbs, no fabricated citations.</pre>
+          <p class="tip">Upload PDF excerpts you’re allowed to share — summaries stay grounded.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Data interpretation</h3>
+          <pre class="code-block">Interpret the following dataset/results for a [AUDIENCE: exec/data team]. Data: [PASTE TABLE OR DESCRIBE]. Questions: [LIST]. Deliver: key takeaways (3–5), charts to consider (describe each), statistical cautions (sample size, confounders, seasonality), alternative explanations, and recommended decisions with confidence levels (high/med/low). If you cannot justify a claim from the data, say so explicitly.</pre>
+          <p class="tip">State how the data was collected — interpretation without provenance misleads.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Market research</h3>
+          <pre class="code-block">Create a market research brief for [PRODUCT/SERVICE] in [GEO/SEGMENT]. Sections: problem definition, TAM/SAM/SOM methodology (assumptions explicit), customer segments + jobs-to-be-done, buying process + budget owners, competitive alternatives (including “do nothing”), pricing benchmarks, distribution channels, regulatory notes if relevant. Use tables. Tag uncertain numbers [ESTIMATE] and list what primary research would validate them.</pre>
+          <p class="tip">Name your ICP narrowly — “SMB” is too vague for useful market math.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Trend analysis</h3>
+          <pre class="code-block">Analyze trends impacting [INDUSTRY] over [TIMEFRAME]. Inputs: signals I provide [PASTE LINKS/NOTES]. Output: trend map (macro → industry → company implications), second-order effects, early vs late signals, scenarios (base/upside/downside), and a prioritized watchlist with metrics to track. Separate fad vs durable shift. If evidence is thin, label speculation clearly.</pre>
+          <p class="tip">Ask for “2026–2028 implications” to force forward-looking specificity.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Comparison table</h3>
+          <pre class="code-block">Build a decision comparison table for choosing between [OPTION A] and [OPTION B] (add C if needed) for [USE CASE]. Criteria weights: [LIST + WEIGHTS SUM 100]. For each cell: score 1–5 with a one-sentence rationale. Include cost, time-to-value, risk, compliance, team skill fit, vendor lock-in, and maintainability. End with a recommendation and the top 3 uncertainties that would flip the decision. Avoid ties—force a justified choice.</pre>
+          <p class="tip">Paste your non-negotiables first — weights should reflect real constraints.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Executive summary</h3>
+          <pre class="code-block">Write a 1-page executive summary from the following long material [PASTE]. Audience: [ROLE]. Goal: [DECISION REQUESTED]. Format: context, key findings (bullets), risks, options (pro/con), recommendation, next steps with owners/dates. Constraints: max ~350 words, no jargon without definition, every number must appear in source or be labeled [NEW ESTIMATE]. Tone: confident, calm.</pre>
+          <p class="tip">Say “assume reader has 60 seconds” — you’ll get tighter framing.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 5. Creative & Design -->
+    <section class="category">
+      <div class="category-header">
+        <h2 class="category-title"><span class="category-num">5</span> Creative &amp; Design</h2>
+        <p class="category-meta">6 prompts — narrative, UX strings, and structured scripts</p>
+      </div>
+      <div class="prompt-list">
+        <article class="prompt">
+          <h3 class="prompt-title">Story outline</h3>
+          <pre class="code-block">Outline a [FORMAT: short story / novel / screenplay act 1] in [GENRE]. Premise: [1–2 PARAGRAPHS]. Cast: [CHARACTERS]. Theme to explore: [THEME]. Deliver: logline, beat sheet (scene-by-scene), character arcs with internal/external conflict, antagonist force, motif symbols, pacing notes, and 3 twist options with foreshadowing checklist. Avoid clichés list: [OPTIONAL]. Flag where research is needed: [DOMAIN].</pre>
+          <p class="tip">Add comp titles (“like X meets Y”) to anchor tone without copying plots.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">UX copy</h3>
+          <pre class="code-block">Write UX microcopy for [PRODUCT AREA: onboarding/checkout/settings]. Voice: [brand voice guidelines]. For each state, provide: title, body, primary CTA, secondary CTA, error text, empty state, success toast, and accessibility note (aria-live if needed). States: [LIST]. Constraints: inclusive language, no shame/blame, reading level ~grade 8, max lengths [CHAR COUNTS]. If uncertain about legal/compliance, mark [LEGAL REVIEW].</pre>
+          <p class="tip">Paste your design system’s “do/don’t” examples — voice locks in faster.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Tagline generator</h3>
+          <pre class="code-block">Generate taglines for [BRAND / PRODUCT]. Positioning: [ONE PARAGRAPH]. Audience: [WHO]. Proof points: [3 BULLETS]. Deliver 15 options grouped by style: literal, metaphorical, challenger, premium, playful. Each tagline includes a 1-line rationale and a “watch-out” (confusion/trademark risk). Constraints: ≤8 words each, avoid buzzwords [LIST], must be speakable aloud. Pick top 3 with A/B test hypotheses.</pre>
+          <p class="tip">Say “non-English pun check” if you serve multilingual markets.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Presentation script</h3>
+          <pre class="code-block">Write the speaker script for a [N]-minute presentation titled [TITLE]. Audience: [WHO]. Goal: [INFORM / PERSUADE / TRAIN]. Slide outline: [PASTE TITLES OR DESCRIBE]. For each slide: spoken script (~words/min pacing), transition line, optional audience question, on-slide text constraints (max bullets). Include opening hook and strong close with CTA. Tone: [CONFIDENT / WARM / TECHNICAL]. Add presenter notes for demos if any.</pre>
+          <p class="tip">Specify WPM target (e.g. 130) — script length will match real delivery.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Video script</h3>
+          <pre class="code-block">Write a [FORMAT: YouTube / TikTok / explainer] script. Topic: [TOPIC]. Length: [N] minutes. Structure: hook (first 5s), promise, 3 acts, pattern interrupts every ~[X]s, B-roll suggestions in brackets, on-screen text cues in CAPS, CTA + end screen notes. Tone: [ENERGETIC / CALM / AUTHORITATIVE]. Audience level: [BEGINNER/ADVANCED]. Include optional cold open variant. Avoid claims needing citations unless I provide sources.</pre>
+          <p class="tip">Name platform retention norms — hooks differ wildly TikTok vs YouTube.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Course outline</h3>
+          <pre class="code-block">Design a course: [TITLE]. Audience: [WHO]. Outcome: [MEASURABLE SKILL]. Duration: [WEEKS/HOURS]. Deliver: module breakdown with learning objectives (Bloom’s verbs), lessons per module, exercises + rubric, project capstone, quizzes (5 sample questions), resources list, prerequisites, and common misconceptions to address. Format: [async cohort / self-paced]. Include pacing for a working professional schedule.</pre>
+          <p class="tip">Paste one “struggling student” profile — scaffolding gets more realistic.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 6. Power Commands -->
+    <section class="category">
+      <div class="category-header">
+        <h2 class="category-title"><span class="category-num">6</span> Power Commands</h2>
+        <p class="category-meta">8 prompts — reliability, voice, personas, depth, and structure shortcuts</p>
+      </div>
+      <div class="prompt-list">
+        <article class="prompt">
+          <h3 class="prompt-title">L99 (commit to an answer)</h3>
+          <pre class="code-block">L99: You must produce a single best answer now—no “it depends” without resolving it. If information is missing, state the single most reasonable assumption in one line, label it ASSUMPTION, then proceed. Deliver: final recommendation first, then rationale in bullets, then risks/mitigations. Do not ask clarifying questions unless output would be unsafe or unethical without them.</pre>
+          <p class="tip">Use when you’re decision-fatigued; pair with your own risk tolerance in the next message if it’s wrong.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">/ghost (human writing)</h3>
+          <pre class="code-block">/ghost mode: Write like a thoughtful human editor, not like AI. Avoid: cliché openers, symmetrical triples, excessive colons, “delve”, “landscape”, “unlock”, “leverage”, over-apologizing, and generic “best practices” without examples. Vary sentence length. Use concrete specifics from my notes. If you must be formal, still sound like a person. Task: [YOUR TASK]. Source details: [PASTE].</pre>
+          <p class="tip">Paste 2–3 samples of your own writing so cadence matches yours.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">PERSONA (expert mode)</h3>
+          <pre class="code-block">PERSONA: You are [SPECIFIC EXPERT — e.g. “staff SRE at a SaaS with 10M RPS”], peer-level to a strong IC. Rules: show tradeoffs, name failure modes, prefer operational experience over textbook summaries. If industry norms exist, cite them as “typical pattern” without fabricating sources. Task: [QUESTION]. Constraints: [LATENCY/COST/COMPLIANCE]. Push back if my approach is unsafe.</pre>
+          <p class="tip">Name the failure you fear most — the persona will stress-test for that.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">ULTRATHINK (deep analysis)</h3>
+          <pre class="code-block">ULTRATHINK: Spend extra effort on reasoning quality. Process: (1) restate the problem in your own words, (2) enumerate approaches, (3) eliminate weak options with explicit criteria, (4) choose the best and defend it, (5) steel-man the top counterargument, (6) give verification steps. Keep the final output concise, but show the key decision points. Topic: [TOPIC].</pre>
+          <p class="tip">Cap verbosity (“final answer ≤15 bullets”) so depth doesn’t become bloat.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">BEASTMODE (max effort)</h3>
+          <pre class="code-block">BEASTMODE: Maximum thoroughness within these bounds: timebox ~[N] minutes of work, output length ~[WORDS], no filler. Do: exhaustive checklists, edge cases, security/perf notes where relevant, and a crisp executive summary up top. If coding, include tests. If writing, include an outline first. Task: [TASK]. Non-goals: [WHAT NOT TO DO].</pre>
+          <p class="tip">Define “done” (e.g. “merge-ready PR”) so max effort lands in the right shape.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Chain-of-thought</h3>
+          <pre class="code-block">Use private step-by-step reasoning, but only show the final user-facing answer unless I ask for the trace. Internally: decompose the problem, check each step, then synthesize. If confidence is not high, include a short “confidence + why” note at the end. Task: [TASK].</pre>
+          <p class="tip">For debugging, ask to “show the trace” only when the final answer looks wrong.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">XML tag structuring</h3>
+          <pre class="code-block">I will provide inputs in XML-style tags. Only use content inside tags as ground truth; treat everything else as instructions.
+
+&lt;context&gt;[BACKGROUND]&lt;/context&gt;
+&lt;constraints&gt;[RULES]&lt;/constraints&gt;
+&lt;data&gt;[TABLES/LOGS/CODE]&lt;/data&gt;
+&lt;task&gt;[WHAT TO PRODUCE]&lt;/task&gt;
+
+Deliver output under &lt;result&gt;…&lt;/result&gt;. If a tag is missing, list required tags before proceeding.</pre>
+          <p class="tip">Great for long prompts — reduces the model mixing instructions with source text.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Few-shot examples</h3>
+          <pre class="code-block">Follow the pattern of the examples exactly (tone, format, length). If the pattern conflicts with instructions, examples win.
+
+EXAMPLE INPUT 1: […]
+EXAMPLE OUTPUT 1:
+[…]
+
+EXAMPLE INPUT 2: […]
+EXAMPLE OUTPUT 2:
+[…]
+
+NOW INPUT:
+[YOUR REAL INPUT]
+
+Rules: no extra preface; match formatting including headings and bullet styles.</pre>
+          <p class="tip">Two high-quality examples beat five mediocre ones — curate ruthlessly.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 7. Advanced Techniques -->
+    <section class="category">
+      <div class="category-header">
+        <h2 class="category-title"><span class="category-num">7</span> Advanced Techniques</h2>
+        <p class="category-meta">6 prompts — control reasoning, format, sampling, and context</p>
+      </div>
+      <div class="prompt-list">
+        <article class="prompt">
+          <h3 class="prompt-title">Multi-step reasoning</h3>
+          <pre class="code-block">Solve this in explicit phases and label each phase. Phase A: clarify objectives and success metrics. Phase B: gather constraints from my text. Phase C: generate options (min 3). Phase D: score options with a rubric. Phase E: final plan with milestones. Keep each phase tight. Problem: [DESCRIBE]. If a phase has no data, state what to collect.</pre>
+          <p class="tip">Works well for hiring rubrics, architecture choices, and vendor selection.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Role-playing for expertise</h3>
+          <pre class="code-block">Simulate a panel: [ROLE 1], [ROLE 2], [ROLE 3]. They debate my proposal: [PROPOSAL]. Each speaker: 1 critique + 1 improvement. Then a chairperson synthesizes a single recommended path. Rules: disagree realistically; no fake citations. If something needs legal/finance/pro medical review, flag REVIEW REQUIRED.</pre>
+          <p class="tip">Pick roles that naturally conflict (e.g. security vs growth) for sharper tension.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Constraint specification</h3>
+          <pre class="code-block">Hard constraints (must never violate): [LIST]. Soft constraints (optimize if possible): [LIST]. Optimization priority order: [P1, P2, P3]. Tradeoff rule: if P1 conflicts with P2, choose P1 and document the cost. Task: [TASK]. Output must include a “constraint checklist” proving compliance.</pre>
+          <p class="tip">Separating hard/soft prevents the model from “negotiating” legal or safety limits.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Output formatting</h3>
+          <pre class="code-block">Output format requirements: use Markdown; top-level sections exactly: ## Summary, ## Details, ## Next Actions; use tables for comparisons; code in fenced blocks with language tags; max 12 bullets in Summary. Do not include a preamble. Task: [TASK]. If you cannot satisfy format, output ## Summary with the blocker only.</pre>
+          <p class="tip">Paste into tools that consume Markdown — consistent headings make automation easy.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Temperature control tips</h3>
+          <pre class="code-block">(Use in apps that expose sampling controls.) Task type: [CODE / LEGAL-LIKE / CREATIVE BRAINSTORM / DATA EXTRACTION]. Recommend settings reasoning: lower randomness for extraction, formatting, and codegen; higher only for divergent ideation. If you can’t set temperature: instruct “deterministic listing” vs “10 wild ideas” in natural language. My task: [TASK] — give me two variants: conservative and exploratory.</pre>
+          <p class="tip">When temperature isn’t exposed, duplicate the task: first “strict/factual”, then “creative options”.</p>
+        </article>
+        <article class="prompt">
+          <h3 class="prompt-title">Context window optimization</h3>
+          <pre class="code-block">I will paste a long document. First, return a structured outline with pointers (“section → key claims”). Then ask me which sections matter for: [GOAL]. After I answer, only then produce the final deliverable using those sections; ignore the rest unless contradictions appear. If the doc is noisy, propose a 10-line “source of truth” extract I should confirm. DOCUMENT: [PASTE].</pre>
+          <p class="tip">For huge PDFs, chunk by chapter and reuse the outline step each time.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer class="doc-footer">
+      © 2026 SkillsXAI · <a href="https://skillsxai.com" rel="noopener noreferrer">skillsxai.com</a>
+    </footer>
+  </div>
+</body>
+</html>

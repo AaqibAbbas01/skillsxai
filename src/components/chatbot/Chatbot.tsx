@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect, useCallback } from 'react'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import ReactMarkdown from 'react-markdown'
 import {
@@ -41,6 +42,7 @@ const WELCOME_MESSAGE: Message = {
 // Pre-defined responses removed — now powered by Gemini AI
 
 export default function Chatbot() {
+  const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
   const [isMinimized, setIsMinimized] = useState(false)
   const [messages, setMessages] = useState<Message[]>([WELCOME_MESSAGE])
@@ -55,6 +57,8 @@ export default function Chatbot() {
   }, [])
 
   useEffect(() => { scrollToBottom() }, [messages, scrollToBottom])
+
+  if (pathname.startsWith('/masterclass')) return null
 
   useEffect(() => {
     if (isOpen && !isMinimized) {

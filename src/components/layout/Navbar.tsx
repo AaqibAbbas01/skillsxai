@@ -50,6 +50,9 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Hide Navbar entirely on private funnel pages
+  if (pathname.startsWith('/masterclass')) return null
+
   const isGateway = pathname === '/'
   const isSchools = pathname.startsWith('/schools')
   const isPro = pathname.startsWith('/professionals')
