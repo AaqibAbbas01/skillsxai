@@ -12,7 +12,6 @@ import {
   Check,
   Download,
   Award,
-  Zap,
   Bot,
   BookOpen,
   Gift,
@@ -170,100 +169,12 @@ interface FeedbackData {
   content: number
   instructor: number
   recommend: number
-  bestPart: string
-  improvements: string
-  goals: string
 }
-
-// ─── MCQ Questions ────────────────────────────────────────────────────────────
-const quizQuestions = [
-  {
-    q: 'What does "AI" stand for?',
-    options: ['Automated Integration', 'Artificial Intelligence', 'Advanced Internet', 'Automated Interface'],
-    correct: 1,
-  },
-  {
-    q: 'Which of these is an example of a Large Language Model (LLM)?',
-    options: ['Photoshop', 'Excel', 'Claude by Anthropic', 'Google Chrome'],
-    correct: 2,
-  },
-  {
-    q: 'What is a "prompt" in the context of AI?',
-    options: [
-      'A reminder notification',
-      'An instruction or input you give to an AI model',
-      'A type of computer chip',
-      'A software license',
-    ],
-    correct: 1,
-  },
-  {
-    q: 'Which technology allows AI to understand and generate human language?',
-    options: ['Blockchain', 'Natural Language Processing (NLP)', 'Virtual Reality', 'Cloud Storage'],
-    correct: 1,
-  },
-  {
-    q: 'What are "AI Agents"?',
-    options: [
-      'Human customer service representatives',
-      'Antivirus software programs',
-      'AI systems that autonomously perform tasks and make decisions',
-      'Social media bots that post spam',
-    ],
-    correct: 2,
-  },
-  {
-    q: 'What does "API" stand for?',
-    options: [
-      'Automated Program Interface',
-      'Application Programming Interface',
-      'Advanced Protocol Integration',
-      'Artificial Processing Intelligence',
-    ],
-    correct: 1,
-  },
-  {
-    q: 'Which company created ChatGPT?',
-    options: ['Google', 'Meta', 'OpenAI', 'Microsoft'],
-    correct: 2,
-  },
-  {
-    q: 'What is "prompt engineering"?',
-    options: [
-      'Building physical computers',
-      'The art of crafting effective instructions for AI models',
-      'A type of software engineering degree',
-      'Programming robots',
-    ],
-    correct: 1,
-  },
-  {
-    q: 'Which of these is NOT a common use of AI in business?',
-    options: [
-      'Automating repetitive tasks',
-      'Generating content and reports',
-      'Physically manufacturing products',
-      'Analysing customer data',
-    ],
-    correct: 2,
-  },
-  {
-    q: 'What is "Workflow Automation"?',
-    options: [
-      'Manually doing tasks faster',
-      'Using AI/software to automatically execute a sequence of tasks without human intervention',
-      'Hiring more employees for a workflow',
-      'Creating paper-based checklists',
-    ],
-    correct: 1,
-  },
-]
 
 // ─── Step Progress Bar ────────────────────────────────────────────────────────
 const steps = [
   { label: 'Your Details', icon: User },
   { label: 'Feedback', icon: Star },
-  { label: 'AI Quiz', icon: Zap },
   { label: 'Claim Rewards', icon: Gift },
 ]
 
@@ -405,7 +316,7 @@ function RegistrationStep({
       <div className="text-center mb-8">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300 text-sm font-medium mb-4">
           <Sparkles className="w-4 h-4" />
-          Step 1 of 4 — Your Details
+          Step 1 of 3 — Your Details
         </div>
         <h2 className="text-3xl font-bold text-white mb-2">Thank You for Completing Our Masterclass!</h2>
         <p className="text-gray-400">Please fill in your details below to download your professional AI certificate.</p>
@@ -559,7 +470,7 @@ function FeedbackStep({
       <div className="text-center mb-8">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-300 text-sm font-medium mb-4">
           <Star className="w-4 h-4" />
-          Step 2 of 4 — Share Your Feedback
+          Step 2 of 3 — Share Your Feedback
         </div>
         <h2 className="text-3xl font-bold text-white mb-2">How Was Your Experience?</h2>
         <p className="text-gray-400">Your honest feedback helps us make the masterclass even better.</p>
@@ -587,39 +498,6 @@ function FeedbackStep({
           label="Would you recommend SkillsXAI to others? *"
         />
 
-        <div className="space-y-1.5">
-          <label className="text-sm font-medium text-gray-300">What was the best part of the masterclass?</label>
-          <textarea
-            rows={3}
-            value={data.bestPart}
-            onChange={(e) => onChange({ ...data, bestPart: e.target.value })}
-            placeholder="e.g. The live demo of AI tools was mind-blowing..."
-            className="w-full bg-dark-700/60 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500/40 focus:border-yellow-500/30 transition-all resize-none"
-          />
-        </div>
-
-        <div className="space-y-1.5">
-          <label className="text-sm font-medium text-gray-300">Any suggestions for improvement?</label>
-          <textarea
-            rows={3}
-            value={data.improvements}
-            onChange={(e) => onChange({ ...data, improvements: e.target.value })}
-            placeholder="e.g. More hands-on practice time would be great..."
-            className="w-full bg-dark-700/60 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500/40 focus:border-yellow-500/30 transition-all resize-none"
-          />
-        </div>
-
-        <div className="space-y-1.5">
-          <label className="text-sm font-medium text-gray-300">What are your AI learning goals?</label>
-          <textarea
-            rows={2}
-            value={data.goals}
-            onChange={(e) => onChange({ ...data, goals: e.target.value })}
-            placeholder="e.g. I want to automate my work and land a better job..."
-            className="w-full bg-dark-700/60 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500/40 focus:border-yellow-500/30 transition-all resize-none"
-          />
-        </div>
-
         <div className="flex gap-3 pt-2">
           <button
             onClick={onBack}
@@ -632,7 +510,7 @@ function FeedbackStep({
             disabled={!isValid}
             className="flex-[2] py-3.5 rounded-xl bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-semibold hover:from-yellow-400 hover:to-orange-400 transition-all shadow-lg hover:shadow-yellow-500/25 flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Proceed to AI Quiz
+            Claim Your Rewards
             <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
@@ -644,187 +522,25 @@ function FeedbackStep({
   )
 }
 
-// ─── Page 3: MCQ Quiz ─────────────────────────────────────────────────────────
-function QuizStep({
-  onNext,
-  onBack,
-  onScoreChange,
-}: {
-  onNext: () => void
-  onBack: () => void
-  onScoreChange: (score: number) => void
-}) {
-  const [answers, setAnswers] = useState<(number | null)[]>(Array(10).fill(null))
-  const [submitted, setSubmitted] = useState(false)
-  const [score, setScore] = useState(0)
-
-  const handleAnswer = (qIdx: number, optIdx: number) => {
-    if (submitted) return
-    const next = [...answers]
-    next[qIdx] = optIdx
-    setAnswers(next)
-  }
-
-  const handleSubmit = () => {
-    const s = answers.reduce<number>((acc, ans, i) => {
-      return ans === quizQuestions[i].correct ? acc + 1 : acc
-    }, 0)
-    setScore(s)
-    onScoreChange(s)
-    setSubmitted(true)
-  }
-
-  const allAnswered = answers.every((a) => a !== null)
-  const percentage = Math.round((score / 10) * 100)
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: 40 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: -40 }}
-      transition={{ duration: 0.4 }}
-      className="w-full max-w-2xl mx-auto"
-    >
-      <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-sm font-medium mb-4">
-          <Zap className="w-4 h-4" />
-          Step 3 of 4 — AI Knowledge Quiz
-        </div>
-        <h2 className="text-3xl font-bold text-white mb-2">Test Your AI Knowledge</h2>
-        <p className="text-gray-400">10 quick MCQ questions — show what you learned!</p>
-      </div>
-
-      {submitted ? (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="glass-card rounded-2xl p-8 text-center space-y-6"
-        >
-          <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center shadow-[0_0_40px_rgba(139,92,246,0.4)]">
-            <span className="text-3xl font-bold text-white">{score}/10</span>
-          </div>
-          <div>
-            <h3 className="text-2xl font-bold text-white mb-2">
-              {percentage >= 80 ? '🎉 Excellent!' : percentage >= 60 ? '👍 Well Done!' : '💪 Good Effort!'}
-            </h3>
-            <p className="text-gray-400">
-              You scored <span className="text-purple-400 font-semibold">{score} out of 10</span> ({percentage}%)
-            </p>
-            {percentage >= 80 && (
-              <p className="text-green-400 text-sm mt-2 font-medium">
-                ✅ You qualify for the certificate of distinction!
-              </p>
-            )}
-          </div>
-
-          {/* Answer review */}
-          <div className="text-left space-y-3 max-h-64 overflow-y-auto pr-1">
-            {quizQuestions.map((q, i) => {
-              const isCorrect = answers[i] === q.correct
-              return (
-                <div
-                  key={i}
-                  className={`p-3 rounded-xl border text-sm ${
-                    isCorrect
-                      ? 'border-green-500/20 bg-green-500/5'
-                      : 'border-red-500/20 bg-red-500/5'
-                  }`}
-                >
-                  <p className="font-medium text-gray-200 mb-1">
-                    {isCorrect ? '✅' : '❌'} Q{i + 1}. {q.q}
-                  </p>
-                  {!isCorrect && (
-                    <p className="text-green-400 text-xs">
-                      Correct: {q.options[q.correct]}
-                    </p>
-                  )}
-                </div>
-              )
-            })}
-          </div>
-
-          <div className="flex gap-3 pt-2">
-            <button
-              onClick={onBack}
-              className="flex-1 py-3.5 rounded-xl border border-white/10 text-gray-300 font-semibold hover:bg-white/5 transition-all flex items-center justify-center gap-2"
-            >
-              <ChevronLeft className="w-5 h-5" /> Back
-            </button>
-            <button
-              onClick={onNext}
-              className="flex-[2] py-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold hover:from-purple-500 hover:to-blue-500 transition-all shadow-lg flex items-center justify-center gap-2 group"
-            >
-              Claim Your Rewards 🎁
-              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-          </div>
-        </motion.div>
-      ) : (
-        <div className="space-y-4">
-          {quizQuestions.map((q, i) => (
-            <div key={i} className="glass-card rounded-xl p-5">
-              <p className="font-semibold text-white mb-3">
-                <span className="text-purple-400 mr-2">Q{i + 1}.</span>
-                {q.q}
-              </p>
-              <div className="grid grid-cols-1 gap-2">
-                {q.options.map((opt, j) => (
-                  <button
-                    key={j}
-                    onClick={() => handleAnswer(i, j)}
-                    className={`text-left px-4 py-2.5 rounded-lg border text-sm transition-all ${
-                      answers[i] === j
-                        ? 'border-purple-500 bg-purple-500/15 text-purple-200 font-medium'
-                        : 'border-white/8 text-gray-300 hover:border-white/20 hover:bg-white/5'
-                    }`}
-                  >
-                    <span className="text-gray-500 mr-2">{String.fromCharCode(65 + j)}.</span>
-                    {opt}
-                  </button>
-                ))}
-              </div>
-            </div>
-          ))}
-
-          <div className="flex gap-3 pt-2">
-            <button
-              onClick={onBack}
-              className="flex-1 py-3.5 rounded-xl border border-white/10 text-gray-300 font-semibold hover:bg-white/5 transition-all flex items-center justify-center gap-2"
-            >
-              <ChevronLeft className="w-5 h-5" /> Back
-            </button>
-            <button
-              onClick={handleSubmit}
-              disabled={!allAnswered}
-              className="flex-[2] py-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold hover:from-purple-500 hover:to-blue-500 transition-all shadow-lg flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed"
-            >
-              Submit Answers ({answers.filter(Boolean).length}/10)
-            </button>
-          </div>
-          {!allAnswered && (
-            <p className="text-center text-xs text-gray-500">Answer all 10 questions to submit.</p>
-          )}
-        </div>
-      )}
-    </motion.div>
-  )
-}
-
 // ─── UPI Config ──────────────────────────────────────────────────────────────
 const UPI_ID = '9910356706@pthdfc'
 const UPI_NAME = 'SkillsXAI'
-const AMOUNT = 99
+type PlanType = 'pro' | 'ultimate'
+const PLAN_CONFIG = {
+  pro: { amount: 199, label: 'Pro Package', tag: 'POPULAR' },
+  ultimate: { amount: 299, label: 'Ultimate Package', tag: 'BEST VALUE' },
+} as const
 
 // ─── Page 4: Rewards ──────────────────────────────────────────────────────────
 function RewardsStep({
   userData,
-  score,
   onBack,
 }: {
   userData: UserData
-  score: number
   onBack: () => void
 }) {
+  const [selectedPlan, setSelectedPlan] = useState<PlanType>('pro')
+  const [paidPlan, setPaidPlan] = useState<PlanType | null>(null)
   const [payState, setPayState] = useState<'idle' | 'verifying' | 'success'>('idle')
   const [utrInput, setUtrInput] = useState('')
   const [utrError, setUtrError] = useState('')
@@ -835,6 +551,17 @@ function RewardsStep({
   const [certUrl, setCertUrl] = useState('')
   const [savedCertId, setSavedCertId] = useState('')
 
+  const currentPlan = PLAN_CONFIG[selectedPlan]
+
+  const handlePlanSelect = (plan: PlanType) => {
+    setSelectedPlan(plan)
+    if (paidPlan && plan !== paidPlan) {
+      setPayState('idle')
+      setUtrInput('')
+      setUtrError('')
+      setVerifyMessage('')
+    }
+  }
   const orderId = useRef(`SKXMC-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`).current
 
   const saveCertToDb = async () => {
@@ -860,7 +587,7 @@ function RewardsStep({
     ? `https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=${encodeURIComponent('AI Masterclass — SkillsXAI')}&organizationName=${encodeURIComponent('SkillsXAI')}&issueYear=${new Date().getFullYear()}&issueMonth=${new Date().getMonth() + 1}&certUrl=${encodeURIComponent(certUrl)}&certId=${encodeURIComponent(savedCertId)}`
     : `https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=${encodeURIComponent('AI Masterclass — SkillsXAI')}&organizationName=${encodeURIComponent('SkillsXAI')}&issueYear=${new Date().getFullYear()}&issueMonth=${new Date().getMonth() + 1}&certUrl=${encodeURIComponent('https://skillsxai.com')}&certId=${encodeURIComponent(savedCertId || 'SKX-MC')}`
 
-  const upiDeepLink = `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(UPI_NAME)}&am=${AMOUNT}&cu=INR&tn=${encodeURIComponent(`SkillsXAI Masterclass ${orderId}`)}`
+  const upiDeepLink = `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(UPI_NAME)}&am=${currentPlan.amount}&cu=INR&tn=${encodeURIComponent(`SkillsXAI Masterclass ${orderId}`)}`
 
   const copyUpiId = () => {
     navigator.clipboard.writeText(UPI_ID)
@@ -869,8 +596,13 @@ function RewardsStep({
   }
 
   const handleVerify = async () => {
-    if (!utrInput.trim()) {
-      setUtrError('Please enter your UPI Transaction ID / UTR number')
+    const trimmed = utrInput.trim().replace(/\s/g, '')
+    if (!trimmed) {
+      setUtrError('Please enter your UPI Reference ID')
+      return
+    }
+    if (!/^\d{12}$/.test(trimmed)) {
+      setUtrError('Please enter a valid UPI Reference ID')
       return
     }
     setUtrError('')
@@ -883,36 +615,24 @@ function RewardsStep({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           orderId,
-          utr: utrInput.trim(),
+          utr: trimmed,
           name: userData.name,
           email: userData.email,
           phone: userData.phone,
+          plan: selectedPlan,
         }),
       })
       const data = await res.json()
 
-      if (data.verified) {
+      if (data.verified || data.status === 'PENDING_MANUAL') {
         await saveCertToDb()
+        setPaidPlan(selectedPlan)
         setPayState('success')
-        setVerifyMessage('')
-        fetch('/api/masterclass/send-certificate', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: userData.name, email: userData.email }),
-        }).catch(() => {})
+        setVerifyMessage(data.message || 'Payment recorded! Certificate and resources have been sent to your email.')
       } else if (data.status === 'PENDING') {
         setVerifyMessage(data.message || 'Payment is still processing. Please wait and try again.')
-      } else if (data.status === 'PENDING_MANUAL') {
-        await saveCertToDb()
-        setPayState('success')
-        setVerifyMessage(data.message || 'Payment recorded — we will verify shortly.')
-        fetch('/api/masterclass/send-certificate', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: userData.name, email: userData.email }),
-        }).catch(() => {})
-      } else if (data.status === 'NO_RECORD_FOUND') {
-        setUtrError('No payment found with this Order ID. Please double-check and try again.')
+      } else if (data.status === 'DUPLICATE_UTR') {
+        setUtrError(data.message || 'This UPI Reference ID has already been submitted.')
       } else {
         setUtrError(data.message || 'Verification failed. Please contact support.')
       }
@@ -954,18 +674,84 @@ function RewardsStep({
       <div className="text-center">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-yellow-500/10 to-orange-500/10 border border-yellow-500/20 text-yellow-300 text-sm font-medium mb-4">
           <Crown className="w-4 h-4" />
-          Step 4 of 4 — Unlock Your Pro Package
+          Step 3 of 3 — Choose Your Package
         </div>
         <h2 className="text-3xl font-bold text-white mb-2">
-          Outstanding, {userData.name.split(' ')[0]}!
+          Great job, {userData.name.split(' ')[0]}!
         </h2>
         <p className="text-gray-400">
-          You scored <span className="text-purple-400 font-bold">{score}/10</span> on the quiz.
-          Unlock everything below for just <span className="text-yellow-400 font-bold">₹99</span>.
+          Thank you for your feedback. Choose your package below.
         </p>
       </div>
 
-      {/* PRO PACKAGE */}
+      {/* ── Plan Selection ── */}
+      <div className="grid md:grid-cols-2 gap-4">
+        {/* Pro Plan — ₹199 */}
+        <button
+          onClick={() => handlePlanSelect('pro')}
+          className={`relative text-left rounded-2xl p-5 border-2 transition-all ${
+            selectedPlan === 'pro'
+              ? 'border-yellow-500/60 bg-gradient-to-br from-yellow-500/10 to-orange-500/5 shadow-[0_0_30px_rgba(234,179,8,0.1)]'
+              : 'border-white/10 bg-white/[0.02] hover:border-white/20'
+          }`}
+        >
+          {selectedPlan === 'pro' && (
+            <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-yellow-500 flex items-center justify-center">
+              <CheckCircle2 className="w-3.5 h-3.5 text-black" />
+            </div>
+          )}
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-yellow-500/20 text-yellow-300 text-[10px] font-bold mb-3">
+            <Crown className="w-3 h-3" /> POPULAR
+          </div>
+          <p className="text-lg font-bold text-white mb-1">Pro Package</p>
+          <div className="flex items-baseline gap-2 mb-3">
+            <span className="text-3xl font-bold text-white">₹199</span>
+            <span className="text-gray-500 text-sm line-through">₹2,499</span>
+          </div>
+          <div className="space-y-2 text-xs text-gray-400">
+            <p className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 flex-shrink-0" /> Professional Certificate</p>
+            <p className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 flex-shrink-0" /> Claude AI Cheat Sheet (50+ Prompts)</p>
+            <p className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 flex-shrink-0" /> Free AI APIs & NVIDIA Guide</p>
+            <p className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 flex-shrink-0" /> AI Career Roadmap 2026</p>
+            <p className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 flex-shrink-0" /> Free AI Agents Masterclass</p>
+            <p className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 flex-shrink-0" /> Free 1-on-1 Career Counselling</p>
+          </div>
+        </button>
+
+        {/* Ultimate Plan — ₹299 */}
+        <button
+          onClick={() => handlePlanSelect('ultimate')}
+          className={`relative text-left rounded-2xl p-5 border-2 transition-all ${
+            selectedPlan === 'ultimate'
+              ? 'border-purple-500/60 bg-gradient-to-br from-purple-500/10 to-blue-500/5 shadow-[0_0_30px_rgba(139,92,246,0.15)]'
+              : 'border-white/10 bg-white/[0.02] hover:border-white/20'
+          }`}
+        >
+          {selectedPlan === 'ultimate' && (
+            <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-purple-500 flex items-center justify-center">
+              <CheckCircle2 className="w-3.5 h-3.5 text-white" />
+            </div>
+          )}
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-purple-500/20 text-purple-300 text-[10px] font-bold mb-3">
+            <Sparkles className="w-3 h-3" /> BEST VALUE
+          </div>
+          <p className="text-lg font-bold text-white mb-1">Ultimate Package</p>
+          <div className="flex items-baseline gap-2 mb-3">
+            <span className="text-3xl font-bold text-white">₹299</span>
+            <span className="text-gray-500 text-sm line-through">₹3,999</span>
+          </div>
+          <div className="space-y-2 text-xs text-gray-400">
+            <p className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 flex-shrink-0" /> Everything in Pro Package</p>
+            <p className="flex items-center gap-2"><Star className="w-3.5 h-3.5 text-purple-400 flex-shrink-0 fill-purple-400" /> <span className="text-purple-300 font-semibold">AI Agents Masterclass Sheet (CSV)</span></p>
+            <p className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 flex-shrink-0" /> Advanced AI Prompts Pack (100+)</p>
+            <p className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 flex-shrink-0" /> Weekly AI Tool Updates Newsletter</p>
+            <p className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 flex-shrink-0" /> Early Access to New Courses</p>
+            <p className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-green-500 flex-shrink-0" /> 20% Discount on Full Courses</p>
+          </div>
+        </button>
+      </div>
+
+      {/* PRO PACKAGE DETAILS */}
       <div className="relative rounded-3xl border border-yellow-500/20 bg-gradient-to-br from-[#1a1200]/60 via-[#0f172a] to-[#10063a]/60 p-8 shadow-[0_0_80px_rgba(212,175,55,0.08)] overflow-hidden">
         {/* Glow */}
         <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/3 via-purple-600/3 to-transparent pointer-events-none rounded-3xl" />
@@ -974,14 +760,18 @@ function RewardsStep({
         <div className="relative">
           {/* Badge + Price */}
           <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-yellow-600/30 to-orange-600/30 border border-yellow-500/30 text-yellow-200 text-sm font-bold">
-              <Crown className="w-4 h-4 text-yellow-400" />
-              COMPLETE PRO PACKAGE
+            <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-bold ${
+              selectedPlan === 'ultimate'
+                ? 'bg-gradient-to-r from-purple-600/30 to-blue-600/30 border border-purple-500/30 text-purple-200'
+                : 'bg-gradient-to-r from-yellow-600/30 to-orange-600/30 border border-yellow-500/30 text-yellow-200'
+            }`}>
+              <Crown className={`w-4 h-4 ${selectedPlan === 'ultimate' ? 'text-purple-400' : 'text-yellow-400'}`} />
+              {currentPlan.label.toUpperCase()}
             </div>
             <div className="flex items-baseline gap-2">
-              <span className="text-4xl font-bold text-white">₹99</span>
-              <span className="text-gray-400 text-sm line-through">₹2,499</span>
-              <span className="px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 text-xs font-bold">96% OFF</span>
+              <span className="text-4xl font-bold text-white">₹{currentPlan.amount}</span>
+              <span className="text-gray-400 text-sm line-through">{selectedPlan === 'ultimate' ? '₹3,999' : '₹2,499'}</span>
+              <span className="px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 text-xs font-bold">{selectedPlan === 'ultimate' ? '93% OFF' : '92% OFF'}</span>
             </div>
           </div>
 
@@ -990,63 +780,11 @@ function RewardsStep({
           </h3>
           <p className="text-gray-400 mb-6 text-sm">One-time payment · Instant access · Lifetime validity · Show on your CV</p>
 
-          {/* What's Included - Premium Grid */}
-          <div className="space-y-3 mb-8">
-            {/* Certificate - Hero Card */}
-            <div className="p-4 rounded-2xl border border-yellow-500/20 bg-gradient-to-r from-yellow-500/5 to-orange-500/5">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-yellow-500 to-orange-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-yellow-500/20">
-                  <Award className="w-6 h-6 text-white" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <p className="text-sm font-bold text-white">Professional Certificate of Achievement</p>
-                    <span className="px-1.5 py-0.5 rounded bg-yellow-500/20 text-yellow-400 text-[10px] font-bold">STAR</span>
-                  </div>
-                  <p className="text-xs text-gray-400">Google-approved certificate personalized with your name. Add to your <span className="text-blue-400">LinkedIn</span>, <span className="text-blue-400">CV</span>, and <span className="text-blue-400">Resume</span> as proof of AI competency.</p>
-                </div>
-              </div>
-            </div>
-
-            {/* 2-Column Grid */}
-            <div className="grid md:grid-cols-2 gap-3">
-              {[
-                { icon: Bot, label: 'Free AI Agents Masterclass', desc: 'Complete recorded session — watch & learn anytime, anywhere', color: 'text-blue-400', tag: 'FREE' },
-                { icon: Phone, label: 'Free 1-on-1 AI Career Counselling', desc: 'Personal guidance call with our AI career expert', color: 'text-green-400', tag: 'FREE' },
-                { icon: FileText, label: 'Claude AI Cheat Sheet (50+ Prompts)', desc: 'Copy-paste power prompts for writing, coding, business & more', color: 'text-orange-400', tag: null },
-                { icon: Bot, label: 'Free AI APIs & NVIDIA Guide', desc: 'Every free AI API in 2026 — build apps without spending a rupee', color: 'text-emerald-400', tag: null },
-                { icon: BookOpen, label: 'AI Career Roadmap 2026 (India)', desc: '6-month plan with salaries (₹8L–₹80L+), skills & portfolio projects', color: 'text-pink-400', tag: null },
-                { icon: Sparkles, label: 'Advanced AI Prompts Pack (100+)', desc: 'Battle-tested prompts for ChatGPT, Claude, Gemini & more', color: 'text-purple-400', tag: null },
-                { icon: Mail, label: 'Weekly AI Tool Updates Newsletter', desc: 'Curated picks — stay ahead of the curve every week', color: 'text-cyan-400', tag: null },
-                { icon: Zap, label: 'Early Access to New Courses', desc: 'First picks, beta pricing & exclusive launch discounts', color: 'text-amber-400', tag: null },
-                { icon: Gift, label: '20% Discount on Full Courses', desc: 'Exclusive coupon for any SkillsXAI course enrollment', color: 'text-rose-400', tag: null },
-              ].map((item, i) => {
-                const Icon = item.icon
-                return (
-                  <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-all">
-                    <div className="mt-0.5 w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0">
-                      <Icon className={`w-4 h-4 ${item.color}`} />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2">
-                        <p className="text-sm font-semibold text-white truncate">{item.label}</p>
-                        {item.tag && (
-                          <span className="px-1.5 py-0.5 rounded bg-green-500/20 text-green-400 text-[10px] font-bold flex-shrink-0">{item.tag}</span>
-                        )}
-                      </div>
-                      <p className="text-xs text-gray-500 mt-0.5">{item.desc}</p>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-
-            {/* Social proof */}
-            <div className="flex items-center justify-center gap-6 py-3 text-xs text-gray-500">
-              <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-green-500" /> 500+ students enrolled</span>
-              <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-yellow-500 fill-yellow-500" /> 4.9/5 rating</span>
-              <span className="flex items-center gap-1.5"><Award className="w-3.5 h-3.5 text-blue-500" /> Google Approved</span>
-            </div>
+          {/* Social proof */}
+          <div className="flex items-center justify-center gap-6 py-3 mb-6 text-xs text-gray-500">
+            <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-green-500" /> 500+ students enrolled</span>
+            <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-yellow-500 fill-yellow-500" /> 4.9/5 rating</span>
+            <span className="flex items-center gap-1.5"><Award className="w-3.5 h-3.5 text-blue-500" /> Google Approved</span>
           </div>
 
           {/* ── UPI Payment Flow ── */}
@@ -1091,14 +829,14 @@ function RewardsStep({
               {/* Pay via UPI */}
               <div className="rounded-2xl border border-blue-500/20 bg-blue-500/5 p-6 space-y-5">
                 <p className="text-sm font-bold text-blue-300 flex items-center gap-2">
-                  <Smartphone className="w-4 h-4" /> Pay ₹99 via UPI
+                  <Smartphone className="w-4 h-4" /> Pay ₹{currentPlan.amount} via UPI
                 </p>
 
                 <div className="flex justify-center">
                   <div className="p-3 bg-white rounded-2xl shadow-[0_0_30px_rgba(59,130,246,0.2)]">
                     <img
                       src="/upi-qr.png"
-                      alt="Scan to pay ₹99"
+                      alt={`Scan to pay ₹${currentPlan.amount}`}
                       className="w-44 h-44 object-contain"
                     />
                   </div>
@@ -1132,7 +870,7 @@ function RewardsStep({
                 <div className="grid grid-cols-3 gap-3">
                   {/* Google Pay */}
                   <a
-                    href={`gpay://upi/pay?pa=${UPI_ID}&pn=${encodeURIComponent(UPI_NAME)}&am=${AMOUNT}&cu=INR&tn=${encodeURIComponent(`SkillsXAI ${orderId}`)}`}
+                    href={`gpay://upi/pay?pa=${UPI_ID}&pn=${encodeURIComponent(UPI_NAME)}&am=${currentPlan.amount}&cu=INR&tn=${encodeURIComponent(`SkillsXAI ${orderId}`)}`}
                     className="flex flex-col items-center gap-2 py-3.5 px-2 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.07] hover:border-white/20 transition-all group"
                   >
                     <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
@@ -1148,7 +886,7 @@ function RewardsStep({
 
                   {/* PhonePe */}
                   <a
-                    href={`phonepe://pay?pa=${UPI_ID}&pn=${encodeURIComponent(UPI_NAME)}&am=${AMOUNT}&cu=INR&tn=${encodeURIComponent(`SkillsXAI ${orderId}`)}`}
+                    href={`phonepe://pay?pa=${UPI_ID}&pn=${encodeURIComponent(UPI_NAME)}&am=${currentPlan.amount}&cu=INR&tn=${encodeURIComponent(`SkillsXAI ${orderId}`)}`}
                     className="flex flex-col items-center gap-2 py-3.5 px-2 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-[#5f259f]/10 hover:border-[#5f259f]/30 transition-all group"
                   >
                     <div className="w-10 h-10 rounded-full bg-[#5f259f] flex items-center justify-center shadow-md group-hover:shadow-[0_0_16px_rgba(95,37,159,0.4)] transition-shadow">
@@ -1161,7 +899,7 @@ function RewardsStep({
 
                   {/* Paytm */}
                   <a
-                    href={`paytmmp://pay?pa=${UPI_ID}&pn=${encodeURIComponent(UPI_NAME)}&am=${AMOUNT}&cu=INR&tn=${encodeURIComponent(`SkillsXAI ${orderId}`)}`}
+                    href={`paytmmp://pay?pa=${UPI_ID}&pn=${encodeURIComponent(UPI_NAME)}&am=${currentPlan.amount}&cu=INR&tn=${encodeURIComponent(`SkillsXAI ${orderId}`)}`}
                     className="flex flex-col items-center gap-2 py-3.5 px-2 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-[#00baf2]/10 hover:border-[#00baf2]/30 transition-all group"
                   >
                     <div className="w-10 h-10 rounded-full bg-[#00325b] flex items-center justify-center shadow-md group-hover:shadow-[0_0_16px_rgba(0,186,242,0.4)] transition-shadow">
@@ -1183,7 +921,7 @@ function RewardsStep({
                 </a>
 
                 <p className="text-center text-xs text-gray-500">
-                  Amount: <span className="text-white font-bold">₹99</span> · Pay to:{' '}
+                  Amount: <span className="text-white font-bold">₹{currentPlan.amount}</span> · Pay to:{' '}
                   <span className="text-blue-300">{UPI_ID}</span>
                 </p>
 
@@ -1209,7 +947,7 @@ function RewardsStep({
                 className="w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-lg hover:from-purple-500 hover:to-blue-500 transition-all shadow-[0_0_30px_rgba(139,92,246,0.3)] flex items-center justify-center gap-3"
               >
                 <Crown className="w-5 h-5 text-yellow-400" />
-                I&apos;ve Paid ₹99 — Unlock My Certificate
+                I&apos;ve Paid ₹{currentPlan.amount} — Unlock My Package
               </button>
             </div>
           )}
@@ -1222,9 +960,9 @@ function RewardsStep({
               className="space-y-4"
             >
               <div className="p-4 rounded-xl border border-purple-500/20 bg-purple-500/5">
-                <p className="text-sm font-bold text-purple-300 mb-1">Enter Your UPI Transaction ID</p>
+                <p className="text-sm font-bold text-purple-300 mb-1">Enter Your UPI Reference ID</p>
                 <p className="text-xs text-gray-400">
-                  Find it in your UPI app under &quot;Transaction History&quot; — it&apos;s a 12-digit number (UTR/Reference ID).
+                  Open your UPI app → go to &quot;Transaction History&quot; → copy the Reference ID / UTR number.
                 </p>
               </div>
 
@@ -1239,10 +977,11 @@ function RewardsStep({
               <div className="space-y-1.5">
                 <input
                   type="text"
+                  inputMode="numeric"
                   value={utrInput}
-                  onChange={(e) => { setUtrInput(e.target.value); setUtrError('') }}
+                  onChange={(e) => { setUtrInput(e.target.value.replace(/\D/g, '')); setUtrError('') }}
                   placeholder="e.g. 407812345678"
-                  className={`w-full bg-dark-700/60 border rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all font-mono ${
+                  className={`w-full bg-dark-700/60 border rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all font-mono tracking-widest text-lg ${
                     utrError ? 'border-red-500/60' : 'border-white/10 focus:border-purple-500/40'
                   }`}
                 />
@@ -1288,7 +1027,7 @@ function RewardsStep({
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-[0_0_30px_rgba(34,197,94,0.4)]">
                   <CheckCircle2 className="w-8 h-8 text-white" />
                 </div>
-                <h4 className="text-xl font-bold text-white mb-1">Pro Package Unlocked!</h4>
+                <h4 className="text-xl font-bold text-white mb-1">{currentPlan.label} Unlocked!</h4>
                 <p className="text-gray-400 text-sm">Everything is yours. Download your resources below.</p>
               </div>
 
@@ -1364,11 +1103,12 @@ function RewardsStep({
 
               {/* Downloadable Resources */}
               <div className="space-y-2.5">
-                <p className="text-sm font-bold text-white flex items-center gap-2"><Download className="w-4 h-4 text-blue-400" /> Your Pro Resources</p>
+                <p className="text-sm font-bold text-white flex items-center gap-2"><Download className="w-4 h-4 text-blue-400" /> Your {selectedPlan === 'ultimate' ? 'Ultimate' : 'Pro'} Resources</p>
                 {[
                   { title: 'Claude AI Cheat Sheet — 50+ Power Prompts', file: 'claude-ai-cheatsheet.html', color: 'from-orange-500 to-red-500' },
                   { title: 'Free AI APIs & NVIDIA NIM Guide', file: 'free-ai-apis-guide.html', color: 'from-green-500 to-emerald-600' },
                   { title: 'AI Career Roadmap 2026 — India Edition', file: 'ai-career-roadmap-2026.html', color: 'from-pink-500 to-purple-600' },
+                  ...(selectedPlan === 'ultimate' ? [{ title: 'AI Agent Masterclass Sheet', file: 'Ai Agent Masterclass Sheet - Sheet1.csv', color: 'from-blue-500 to-cyan-500' }] : []),
                 ].map((doc, i) => (
                   <button
                     key={i}
@@ -1383,6 +1123,23 @@ function RewardsStep({
                   </button>
                 ))}
               </div>
+
+              {/* Upgrade to Ultimate (shown only if user paid for Pro) */}
+              {paidPlan === 'pro' && selectedPlan === 'pro' && (
+                <button
+                  onClick={() => handlePlanSelect('ultimate')}
+                  className="w-full p-4 rounded-xl border-2 border-dashed border-purple-500/30 bg-purple-500/5 hover:bg-purple-500/10 hover:border-purple-500/50 transition-all text-left flex items-center gap-4 group"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-blue-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                    <Sparkles className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-sm font-bold text-white group-hover:text-purple-200 transition-colors">Upgrade to Ultimate Package — ₹299</p>
+                    <p className="text-xs text-gray-500">Get the AI Agent Masterclass Sheet + bonus resources</p>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-purple-400 group-hover:translate-x-1 transition-transform flex-shrink-0" />
+                </button>
+              )}
 
               {/* Counselling & Masterclass */}
               <div className="grid grid-cols-2 gap-3">
@@ -1413,7 +1170,7 @@ function RewardsStep({
         onClick={onBack}
         className="w-full py-3 rounded-xl border border-white/10 text-gray-400 font-medium hover:bg-white/5 transition-all flex items-center justify-center gap-2 text-sm"
       >
-        <ChevronLeft className="w-4 h-4" /> Back to Quiz
+        <ChevronLeft className="w-4 h-4" /> Back to Feedback
       </button>
     </motion.div>
   )
@@ -1428,13 +1185,8 @@ export default function MasterclassPage() {
     content: 0,
     instructor: 0,
     recommend: 0,
-    bestPart: '',
-    improvements: '',
-    goals: '',
   })
-  const [quizScore, setQuizScore] = useState(0)
-
-  const saveRegistration = async (score: number) => {
+  const saveRegistration = async () => {
     try {
       await fetch('/api/masterclass/register', {
         method: 'POST',
@@ -1443,15 +1195,11 @@ export default function MasterclassPage() {
           name: userData.name,
           email: userData.email,
           phone: userData.phone,
-          quizScore: score,
           feedback: {
             overall: feedbackData.overall,
             content: feedbackData.content,
             instructor: feedbackData.instructor,
             recommend: feedbackData.recommend,
-            bestPart: feedbackData.bestPart,
-            improvements: feedbackData.improvements,
-            goals: feedbackData.goals,
           },
         }),
       })
@@ -1461,13 +1209,8 @@ export default function MasterclassPage() {
   }
 
   const handleFeedbackNext = () => {
+    saveRegistration()
     setStep(2)
-  }
-
-  const handleQuizNext = (score: number) => {
-    setQuizScore(score)
-    saveRegistration(score)
-    setStep(3)
   }
 
   return (
@@ -1508,19 +1251,10 @@ export default function MasterclassPage() {
             />
           )}
           {step === 2 && (
-            <QuizStep
-              key="step2"
-              onNext={() => setStep(3)}
-              onBack={() => setStep(1)}
-              onScoreChange={(score) => handleQuizNext(score)}
-            />
-          )}
-          {step === 3 && (
             <RewardsStep
-              key="step3"
+              key="step2"
               userData={userData}
-              score={quizScore}
-              onBack={() => setStep(2)}
+              onBack={() => setStep(1)}
             />
           )}
         </AnimatePresence>

@@ -1,0 +1,267 @@
+"Act as an expert full-stack developer.
+
+Create a modern restaurant chat ordering web app where customers can chat with an AI assistant to browse the menu, ask questions, customize items, and place food orders.
+
+Core requirement:
+The chat app must connect to an existing n8n workflow using a configurable webhook POST request.
+
+Webhook behavior:
+- Add a settings/config option where the admin/developer can enter the n8n webhook URL.
+- When a customer sends a chat message, send a POST request to the webhook.
+- The request body should include:
+  - customer message
+  - conversation/session ID
+  - customer name if available
+  - selected items/cart if available
+  - timestamp
+- The n8n webhook response will be plain text.
+- Display the webhook text response as the AI assistant reply in the chat UI.
+
+App features:
+- Clean restaurant-style chat interface
+- Customer message input
+- AI response display
+- Loading indicator while waiting for webhook response
+- Error handling if webhook fails
+- Basic cart/order summary section
+- Mobile-friendly responsive design
+- Easy configuration for webhook URL
+- Professional, clean, production-ready code
+
+Technical expectations:
+- Use clean, maintainable code
+- Separate UI, API/webhook logic, and state management
+- Include comments where helpful
+- Ensure the webhook POST request is reusable
+- Do not hardcode the webhook URL directly in the chat logic
+- The webhook response is text, not JSON
+
+Build the app in a simple and scalable way so it can later be connected to payments, order tracking, and restaurant admin features.",Prompt to AI Studio
+,
+"You are a professional AI waiter for A2Z Restaurant.
+
+Your role is to help customers politely and efficiently with food ordering through chat.
+
+Behavior:
+- Greet customers warmly and professionally.
+- Act like a friendly restaurant waiter.
+- Help customers explore the menu.
+- Recommend dishes based on customer preferences.
+- Answer questions about items, prices, vegetarian/non-vegetarian options, and preparation time.
+- Use the connected Food Menu Sheet as the source of truth.
+- Do not invent menu items, prices, or availability.
+- If an item is not available in the sheet, politely say it is not available.
+- Keep responses clear, short, and helpful.
+- Ask follow-up questions when needed, such as spice level, quantity, or add-ons.
+- Confirm the order before finalizing.
+- Provide a clean order summary with item names, quantities, and total price.
+- Be polite if the customer changes or cancels an item.
+
+Important rules:
+- Always check the Food Menu Sheet before answering menu-related questions.
+- Only suggest items that exist in the Food Menu Sheet.
+- If the customer asks for recommendations, suggest suitable items from the menu.
+- If the customer has dietary preferences, filter recommendations accordingly.
+- If pricing is needed, calculate totals accurately from the sheet.
+- If the customer’s request is unclear, ask a simple clarification question.
+
+Tone:
+Professional, polite, friendly, and helpful.
+
+Restaurant name:
+A2Z Restaurant
+
+Example style:
+“Welcome to A2Z Restaurant! I’d be happy to help you place your order. Are you looking for vegetarian, non-vegetarian, snacks, drinks, or a full meal today?”",Ai Agent System Prompt
+,
+{,n8n Full JSON Workflow
+"""name"": ""My workflow 2"",",
+"""nodes"": [",
+{,
+"""parameters"": {",
+"""httpMethod"": ""POST"",",
+"""path"": ""575c0e68-f402-4e65-8bb6-24137b83dcc8"",",
+"""responseMode"": ""responseNode"",",
+"""options"": {}",
+"},",
+"""type"": ""n8n-nodes-base.webhook"",",
+"""typeVersion"": 2.1,",
+"""position"": [",
+"-176,",
+-48,
+"],",
+"""id"": ""4ff69d73-1437-407c-ac0b-8e08fdac8883"",",
+"""name"": ""Webhook"",",
+"""webhookId"": ""575c0e68-f402-4e65-8bb6-24137b83dcc8""",
+"},",
+{,
+"""parameters"": {",
+"""promptType"": ""define"",",
+"""text"": ""={{ $json.body.message }}"",",
+"""options"": {",
+"""systemMessage"": ""You are a professional AI waiter for A2Z Restaurant.\n\nYour role is to help customers politely and efficiently with food ordering through chat.\n\nBehavior:\n- Greet customers warmly and professionally.\n- Act like a friendly restaurant waiter.\n- Help customers explore the menu.\n- Recommend dishes based on customer preferences.\n- Answer questions about items, prices, vegetarian/non-vegetarian options, and preparation time.\n- Use the connected Food Menu Sheet as the source of truth.\n- Do not invent menu items, prices, or availability.\n- If an item is not available in the sheet, politely say it is not available.\n- Keep responses clear, short, and helpful.\n- Ask follow-up questions when needed, such as spice level, quantity, or add-ons.\n- Confirm the order before finalizing.\n- Provide a clean order summary with item names, quantities, and total price.\n- Be polite if the customer changes or cancels an item.\n\nImportant rules:\n- Always check the Food Menu Sheet before answering menu-related questions.\n- Only suggest items that exist in the Food Menu Sheet.\n- If the customer asks for recommendations, suggest suitable items from the menu.\n- If the customer has dietary preferences, filter recommendations accordingly.\n- If pricing is needed, calculate totals accurately from the sheet.\n- If the customer’s request is unclear, ask a simple clarification question.\n\nTone:\nProfessional, polite, friendly, and helpful.\n\nRestaurant name:\nA2Z Restaurant\n\nExample style:\n“Welcome to A2Z Restaurant! I’d be happy to help you place your order. Are you looking for vegetarian, non-vegetarian, snacks, drinks, or a full meal today?”""",
+},
+"},",
+"""type"": ""@n8n/n8n-nodes-langchain.agent"",",
+"""typeVersion"": 3.1,",
+"""position"": [",
+"32,",
+-48,
+"],",
+"""id"": ""cb77bcc2-084d-4eba-8f6f-c3fbc455fa87"",",
+"""name"": ""AI Agent""",
+"},",
+{,
+"""parameters"": {",
+"""documentId"": {",
+"""__rl"": true,",
+"""value"": ""1H-2p3sBStAy9oBDs3Gk6ld8EdgMtSAVr3RayKyrgd1Q"",",
+"""mode"": ""list"",",
+"""cachedResultName"": ""Food Menu"",",
+"""cachedResultUrl"": ""https://docs.google.com/spreadsheets/d/1H-2p3sBStAy9oBDs3Gk6ld8EdgMtSAVr3RayKyrgd1Q/edit?usp=drivesdk""",
+"},",
+"""sheetName"": {",
+"""__rl"": true,",
+"""value"": ""gid=0"",",
+"""mode"": ""list"",",
+"""cachedResultName"": ""Sheet1"",",
+"""cachedResultUrl"": ""https://docs.google.com/spreadsheets/d/1H-2p3sBStAy9oBDs3Gk6ld8EdgMtSAVr3RayKyrgd1Q/edit#gid=0""",
+"},",
+"""options"": {}",
+"},",
+"""type"": ""n8n-nodes-base.googleSheetsTool"",",
+"""typeVersion"": 4.7,",
+"""position"": [",
+"288,",
+208,
+"],",
+"""id"": ""bd038893-7831-45cf-b5ac-7302b5958958"",",
+"""name"": ""Get row(s) in sheet in Google Sheets"",",
+"""credentials"": {",
+"""googleSheetsOAuth2Api"": {",
+"""id"": ""T2zsXFOjsMHAO4RI"",",
+"""name"": ""Google Sheets OAuth2 API""",
+},
+},
+"},",
+{,
+"""parameters"": {",
+"""respondWith"": ""text"",",
+"""responseBody"": ""={{ $json.output }}"",",
+"""options"": {}",
+"},",
+"""type"": ""n8n-nodes-base.respondToWebhook"",",
+"""typeVersion"": 1.5,",
+"""position"": [",
+"384,",
+-48,
+"],",
+"""id"": ""e6972693-8995-4928-8e7f-ee5cea40a16f"",",
+"""name"": ""Respond to Webhook""",
+"},",
+{,
+"""parameters"": {",
+"""sessionIdType"": ""customKey"",",
+"""sessionKey"": ""={{ $json.body.sessionId }}"",",
+"""contextWindowLength"": 10",
+"},",
+"""type"": ""@n8n/n8n-nodes-langchain.memoryBufferWindow"",",
+"""typeVersion"": 1.3,",
+"""position"": [",
+"144,",
+192,
+"],",
+"""id"": ""e859fd14-68fe-4371-95d6-7c36c8281b3f"",",
+"""name"": ""Simple Memory""",
+"},",
+{,
+"""parameters"": {",
+"""options"": {}",
+"},",
+"""type"": ""@n8n/n8n-nodes-langchain.lmChatGoogleGemini"",",
+"""typeVersion"": 1,",
+"""position"": [",
+"0,",
+144,
+"],",
+"""id"": ""ead7dbe7-592f-4991-af3d-aba015efdbfc"",",
+"""name"": ""Google Gemini Chat Model"",",
+"""credentials"": {",
+"""googlePalmApi"": {",
+"""id"": ""HJNtDzz0S3mIFv3g"",",
+"""name"": ""Google Gemini(PaLM) Api account""",
+},
+},
+},
+"],",
+"""pinData"": {},",
+"""connections"": {",
+"""Webhook"": {",
+"""main"": [",
+[,
+{,
+"""node"": ""AI Agent"",",
+"""type"": ""main"",",
+"""index"": 0",
+},
+],
+],
+"},",
+"""Get row(s) in sheet in Google Sheets"": {",
+"""ai_tool"": [",
+[,
+{,
+"""node"": ""AI Agent"",",
+"""type"": ""ai_tool"",",
+"""index"": 0",
+},
+],
+],
+"},",
+"""AI Agent"": {",
+"""main"": [",
+[,
+{,
+"""node"": ""Respond to Webhook"",",
+"""type"": ""main"",",
+"""index"": 0",
+},
+],
+],
+"},",
+"""Simple Memory"": {",
+"""ai_memory"": [",
+[,
+{,
+"""node"": ""AI Agent"",",
+"""type"": ""ai_memory"",",
+"""index"": 0",
+},
+],
+],
+"},",
+"""Google Gemini Chat Model"": {",
+"""ai_languageModel"": [",
+[,
+{,
+"""node"": ""AI Agent"",",
+"""type"": ""ai_languageModel"",",
+"""index"": 0",
+},
+],
+],
+},
+"},",
+"""active"": true,",
+"""settings"": {",
+"""executionOrder"": ""v1"",",
+"""binaryMode"": ""separate""",
+"},",
+"""versionId"": ""38855534-e1cf-4d60-96da-800a3f9d33cb"",",
+"""meta"": {",
+"""templateCredsSetupCompleted"": true,",
+"""instanceId"": ""87b5288025513eb80e2d781e67673082a6990fbf4002cd3182a6f40ea362b414""",
+"},",
+"""id"": ""4B7s5PbpZiS4EBoZ"",",
+"""tags"": []",
+},

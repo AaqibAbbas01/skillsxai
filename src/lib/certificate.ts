@@ -70,7 +70,16 @@ export function generateEmailHTML(name: string, certId: string, dateStr: string,
 <table cellpadding="0" cellspacing="0" align="center"><tr>${skillCells}</tr></table>
 <p style="color:#475569;font-size:8px;margin:10px 0 0;font-style:italic">ID: ${certId} &middot; ${dateStr}</p>
 </td></tr></table>
-<p style="color:#94a3b8;font-size:13px;margin:0 0 24px">Your full certificate is attached as an HTML file. Open it in any browser and use <strong style="color:#e2e8f0">Print &rarr; Save as PDF</strong> for a perfect A4 certificate.</p>
+<p style="color:#94a3b8;font-size:13px;margin:0 0 16px">Your full certificate is attached as an HTML file. Open it in any browser and use <strong style="color:#e2e8f0">Print &rarr; Save as PDF</strong> for a perfect A4 certificate.</p>
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#0a0f1a;border-radius:10px;border:1px solid rgba(139,92,246,.2);margin-bottom:24px"><tr><td style="padding:16px 20px">
+<p style="color:#a78bfa;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin:0 0 10px">&#128230; Your Pro Resources (attached)</p>
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr><td style="padding:4px 0;color:#60a5fa;font-size:12px">&#128196; Claude AI Cheat Sheet &mdash; 50+ Power Prompts</td></tr>
+<tr><td style="padding:4px 0;color:#34d399;font-size:12px">&#128196; Free AI APIs &amp; NVIDIA NIM Guide</td></tr>
+<tr><td style="padding:4px 0;color:#f472b6;font-size:12px">&#128196; AI Career Roadmap 2026 &mdash; India Edition</td></tr>
+<tr><td style="padding:4px 0;color:#22d3ee;font-size:12px">&#128196; AI Agent Masterclass Sheet</td></tr>
+</table>
+</td></tr></table>
 <table cellpadding="0" cellspacing="0" align="center" style="margin-bottom:16px"><tr>
 <td style="background:#0a66c2;border-radius:8px;padding:12px 24px"><a href="${liUrl}" style="color:white;text-decoration:none;font-weight:700;font-size:13px">Add to LinkedIn Profile</a></td>
 <td width="12"></td>
