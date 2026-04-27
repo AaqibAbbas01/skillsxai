@@ -30,7 +30,7 @@ async function getBrowser(): Promise<Browser> {
     browserInstance = await puppeteerCore.launch({
       args: chromium.args,
       executablePath: await chromium.executablePath(),
-      headless: chromium.headless as boolean,
+      headless: true,
     })
   }
 
