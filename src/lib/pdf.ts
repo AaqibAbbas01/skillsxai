@@ -1,20 +1,40 @@
-import puppeteer from 'puppeteer'
+import puppeteerCore from 'puppeteer-core'
+import type { Browser } from 'puppeteer-core'
 
-let browserInstance: Awaited<ReturnType<typeof puppeteer.launch>> | null = null
+let browserInstance: Browser | null = null
 
-async function getBrowser() {
+const CHROMIUM_ARGS = [
+  '--no-sandbox',
+  '--disable-setuid-sandbox',
+  '--disable-gpu',
+  '--disable-web-security',
+  '--disable-features=IsolateOrigins',
+  '--disable-site-isolation-trials',
+  '--single-process',
+  '--disable-dev-shm-usage',
+]
+
+async function getBrowser(): Promise<Browser> {
   if (browserInstance && browserInstance.connected) return browserInstance
-  browserInstance = await puppeteer.launch({
-    headless: true,
-    args: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-gpu',
-      '--disable-web-security',
-      '--disable-features=IsolateOrigins',
-      '--disable-site-isolation-trials',
-    ],
-  })
+
+  const isDev = process.env.NODE_ENV === 'development'
+
+  if (isDev) {
+    const puppeteer = await import('puppeteer')
+    browserInstance = await puppeteer.default.launch({
+      headless: true,
+      args: CHROMIUM_ARGS,
+    }) as unknown as Browser
+  } else {
+    const chromium = await import('@sparticuz/chromium')
+    browserInstance = await puppeteerCore.launch({
+      args: [...chromium.default.args, ...CHROMIUM_ARGS],
+      defaultViewport: chromium.default.defaultViewport,
+      executablePath: await chromium.default.executablePath(),
+      headless: chromium.default.headless,
+    })
+  }
+
   return browserInstance
 }
 
